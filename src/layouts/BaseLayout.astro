@@ -1,16 +1,23 @@
-<<<<<<< HEAD
+---
+import BaseHead from "../components/global/BaseHead.astro";
+import Footer from "../components/global/Footer.astro";
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Dragon & Bao</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<meta name="generator" content={Astro.generator} />
+	<title>Dragon & Bao</title>
+	<BaseHead />
+</head>
+
+<body class="bg-san-juan-700">
+<slot />
+<Footer />
+</body>
 </html>
 
 <style>
@@ -21,20 +28,3 @@
 		height: 100%;
 	}
 </style>
-=======
----
-import BaseHead from "../components/global/BaseHead.astro";
-import Footer from "../components/global/Footer.astro";
----
-
-<html lang="en">
-  <head>
-    <BaseHead />
-  </head>
-
-  <body class="bg-san-juan-700">
-    <slot />
-<Footer/>
-  </body>
-</html>
->>>>>>> 1694624 (Initial commit)

@@ -1,36 +1,22 @@
 {
-<<<<<<< HEAD
-  "name": "dragonandbao",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-=======
   "name": "@tcheiner/dragonandbao",
   "version": "0.0.1",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
->>>>>>> 1694624 (Initial commit)
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
-<<<<<<< HEAD
   "dependencies": {
-    "astro": "^5.7.10"
-  }
-}
-=======
+    "astro": "^5.7.10",
+    "@astrojs/react": "^4.2.7"
+  },
   "devDependencies": {
     "@astrojs/sitemap": "^3.2.1",
     "@tailwindcss/vite": "^4.0.0-beta.9",
-    "astro": "^5.1.6",
     "tailwindcss": "^4.0.0-beta.9"
-  },
-  "dependencies": {
-    "@astrojs/react": "^4.2.7"
   }
 }
->>>>>>> 1694624 (Initial commit)
