@@ -1,0 +1,204 @@
+@import "tailwindcss";
+@theme {
+
+  /* Charcoal  */
+  --color-charcoal-50: #eceeec;
+  --color-charcoal-100: #d7dad7;
+  --color-charcoal-200: #b0b5b0;
+  --color-charcoal-300: #889188;
+  --color-charcoal-400: #626a62;
+  --color-charcoal-500: #3e433e; /* Default */
+  --color-charcoal-600: #313531;
+  --color-charcoal-700: #252825;
+  --color-charcoal-800: #191a19;
+  --color-charcoal-900: #0c0d0c;
+
+  /* Tomato  */
+  --color-tomato-50: #ffeeeb;
+  --color-tomato-100: #ffe1dc;
+  --color-tomato-200: #febfb3;
+  --color-tomato-300: #fea090;
+  --color-tomato-400: #fd7e68;
+  --color-tomato-500: #fd6043; /* Default */
+  --color-tomato-600: #fc2803;
+  --color-tomato-700: #c01e02;
+  --color-tomato-800: #7e1401;
+  --color-tomato-900: #420a01;
+
+  /* Negroni  */
+  --color-negroni-50: #fdfaf7;
+  --color-negroni-100: #fbf5ef;
+  --color-negroni-200: #f6e8da;
+  --color-negroni-300: #f2deca;
+  --color-negroni-400: #edd1b5;
+  --color-negroni-500: #e9c7a5; /* Default */
+  --color-negroni-600: #d99e63;
+  --color-negroni-700: #c1782f;
+  --color-negroni-800: #7f4f1f;
+  --color-negroni-900: #422910;
+
+  --color-sunshade-50: #fef8ec;
+  --color-sunshade-100: #fce9c9;
+  --color-sunshade-200: #f9d18e;
+  --color-sunshade-300: #f6b253;
+  --color-sunshade-400: #f49d37;
+  --color-sunshade-500: #ed7413;
+  --color-sunshade-600: #d2520d;
+  --color-sunshade-700: #ae370f;
+  --color-sunshade-800: #8d2b13;
+  --color-sunshade-900: #742413;
+  --color-sunshade-950: #431005;
+
+
+  --color-wewak-50: #fff1f3;
+  --color-wewak-100: #ffe3e7;
+  --color-wewak-200: #ffccd6;
+  --color-wewak-300: #ff9fb2;
+  --color-wewak-400: #fe6e8e;
+  --color-wewak-500: #f83b69;
+  --color-wewak-600: #e51955;
+  --color-wewak-700: #c20e47;
+  --color-wewak-800: #a20f43;
+  --color-wewak-900: #8b103f;
+  --color-wewak-950: #4e031e;
+
+  --color-cascade-50: #f5f8f7;
+  --color-cascade-100: #dee9e7;
+  --color-cascade-200: #bcd3d0;
+  --color-cascade-300: #8ab0ab;
+  --color-cascade-400: #6b9691;
+  --color-cascade-500: #517b77;
+  --color-cascade-600: #3f625f;
+  --color-cascade-700: #364f4e;
+  --color-cascade-800: #2e4140;
+  --color-cascade-900: #293837;
+  --color-cascade-950: #141f1f;
+
+  --color-wild-sand-50: #f5f5f5;
+  --color-wild-sand-100: #efefef;
+  --color-wild-sand-200: #dcdcdc;
+  --color-wild-sand-300: #bdbdbd;
+  --color-wild-sand-400: #989898;
+  --color-wild-sand-500: #7c7c7c;
+  --color-wild-sand-600: #656565;
+  --color-wild-sand-700: #525252;
+  --color-wild-sand-800: #464646;
+  --color-wild-sand-900: #3d3d3d;
+  --color-wild-sand-950: #292929;
+
+  --color-java-50: #effcfc;
+  --color-java-100: #d7f5f6;
+  --color-java-200: #b4ebed;
+  --color-java-300: #80dce0;
+  --color-java-400: #3fc1c9;
+  --color-java-500: #2aa7b0;
+  --color-java-600: #258795;
+  --color-java-700: #246d7a;
+  --color-java-800: #265a64;
+  --color-java-900: #234c56;
+  --color-java-950: #12323a;
+
+  --color-san-juan-50: #f5f7fa;
+  --color-san-juan-100: #eaeef4;
+  --color-san-juan-200: #d0dbe7;
+  --color-san-juan-300: #a7bdd2;
+  --color-san-juan-400: #779ab9;
+  --color-san-juan-500: #567da1;
+  --color-san-juan-600: #436386;
+  --color-san-juan-700: #364f6b;
+  --color-san-juan-800: #30445c;
+  --color-san-juan-900: #2c3b4e;
+  --color-san-juan-950: #1d2734;
+
+  --color-kashmir-blue-50: #f5f7fa;
+  --color-kashmir-blue-100: #eaeef4;
+  --color-kashmir-blue-200: #d0dbe7;
+  --color-kashmir-blue-300: #a7bcd2;
+  --color-kashmir-blue-400: #7898b8;
+  --color-kashmir-blue-500: #577ba0;
+  --color-kashmir-blue-600: #47688d;
+  --color-kashmir-blue-700: #37506d;
+  --color-kashmir-blue-800: #31445b;
+  --color-kashmir-blue-900: #2c3b4e;
+  --color-kashmir-blue-950: #1e2733;
+
+  --color-aquamarine-blue-50: #f0fbfa;
+  --color-aquamarine-blue-100: #d8f4f5;
+  --color-aquamarine-blue-200: #b6e8eb;
+  --color-aquamarine-blue-300: #67ced4;
+  --color-aquamarine-blue-400: #4abdc6;
+  --color-aquamarine-blue-500: #2fa1ab;
+  --color-aquamarine-blue-600: #2a8290;
+  --color-aquamarine-blue-700: #286a76;
+  --color-aquamarine-blue-800: #285862;
+  --color-aquamarine-blue-900: #254a54;
+  --color-aquamarine-blue-950: #143038;
+
+  --color-breaker-bay-50: #f2fbfb;
+  --color-breaker-bay-100: #d3f4f3;
+  --color-breaker-bay-200: #a7e8e6;
+  --color-breaker-bay-300: #73d4d5;
+  --color-breaker-bay-400: #46b6bb;
+  --color-breaker-bay-500: #2f9fa6;
+  --color-breaker-bay-600: #22777f;
+  --color-breaker-bay-700: #1f5f66;
+  --color-breaker-bay-800: #1d4c52;
+  --color-breaker-bay-900: #1c4145;
+  --color-breaker-bay-950: #0b2328;
+}
+@font-face {
+  font-family: 'ITCBenguiatBold'; /* Font-family name */
+  src: url('/fonts/ITC Benguiat Gothic Std Bold.otf') format('opentype'); /* Corrected format */
+  font-weight: 400; /* Font weight */
+  font-style: normal; /* Font style */
+}
+
+@font-face {
+  font-family: 'Quicksand'; /* Font-family name */
+  src: url('/fonts/Quicksand-Medium.ttf') format('opentype'); /* Corrected format */
+  font-weight: 400; /* Font weight */
+  font-style: normal; /* Font style */
+}
+
+@font-face {
+  font-family: 'ToylerMedium'; /* Font-family name */
+  src: url('/fonts/TolyerNo1-Bold.ttf') format('opentype'); /* Corrected format */
+  font-weight: 400; /* Font weight */
+  font-style: normal; /* Font style */
+}
+
+/* CSS */
+:root {
+  /* Typography */
+  font-feature-settings: "liga" 1, "calt" 1,
+    /* Contextual Alternates */ "dlig" 1, /* Discretionary Ligatures */ "ss07" 1,
+    /* fSquare punctuation */ "ss08" 1, /* Square quotes */ "zero" 1,
+    /* Slashed zero */ "tnum" 1, /* Tabular numbers */ "cv03" 1,
+    /* Open six */ "cv04" 1, /* Open nine */ "cv01" 1,
+    /* Alternate one */ "cv09", /* Flat-top three */ "cv02" 1; /* Open 4 */
+  font-family: Inter, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+@supports (font-variation-settings: normal) {
+  /* Use variable font if supported */
+  :root {
+    font-family: InterVariable, sans-serif;
+  }
+}
+
+.hamburger {
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+.hamburger .line {
+  display: block;
+  width: 40px;
+  height: 5px;
+  margin-bottom: 10px;
+  background-color: #ff9776;
+}
+
+.hamburger {
+  display: none;
+}
