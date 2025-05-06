@@ -9,13 +9,13 @@ export interface Props {
 
 const { image, alt_desc, name, desc, cost } = Astro.props;
 ---
-<figure>
+<figure class="w-[500px] h-[500px] rounded-3xl shadow-2xl overflow-hidden">
     <img
             class="w-full rounded-3xl shadow-2xl"
             src={image}
             alt={alt_desc}
-            width="1310"
-            height="873"
+            width="500"
+            height="500"
     />
     <div class="mt-4 flex justify-between px-6">
         <div>
