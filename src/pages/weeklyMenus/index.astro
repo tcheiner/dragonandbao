@@ -1,0 +1,54 @@
+---
+import "../../styles/global.css"; // Import global styles
+import { getCollection } from "astro:content";
+import Banner from "../../components/Banner.astro";
+
+// Fetch all MDX files from the weeklyMenus collection
+const weeklyMenus = await getCollection("weeklyMenus");
+
+// Sort by descending dates (assuming the slug is in a date format like "YYYY-MM-DD")
+weeklyMenus.sort((a, b) => new Date(b.slug) - new Date(a.slug));
+
+// Extract all unique tags
+const allTags = Array.from(new Set(weeklyMenus.flatMap((menu) => menu.data.tags)));
+
+// Debugging (optional)
+console.log(weeklyMenus.map((menu) => menu.data));
+---
+
+<!-- Banner -->
+<Banner title="Weekly Menus" subtitle="Explore delicious menus by date" />
+
+<!-- Breadcrumb Trail -->
+<nav class="text-sm text-gray-600 mb-4">
+    <a href="/" class="hover:underline">Home</a> &gt; <span>Weekly Menus</span>
+</nav>
+
+<!-- Tags -->
+<div class="mb-8">
+    <h2 class="text-xl font-bold mb-4">Tags</h2>
+    <div class="flex flex-wrap gap-2">
+        {allTags.map((tag) => (
+                <span class="bg-gray-200 text-gray-700 py-1 px-3 rounded-full text-sm">{tag}</span>
+        ))}
+    </div>
+</div>
+
+<!-- 3x3 Grid of Images -->
+<div class="grid grid-cols-3 gap-4">
+    {weeklyMenus.map((menu) => (
+            <a href={`/weekly-menus/${menu.slug}`} class="block">
+                {menu.data.image?.url ? (
+                        <img
+                                src={menu.data.image.url}
+                                alt={menu.data.image.alt || "Image"}
+                                class="rounded-lg shadow-md hover:opacity-90 transition-opacity"
+                        />
+                ) : (
+                        <div class="bg-gray-200 rounded-lg shadow-md flex items-center justify-center h-32">
+                            <span class="text-gray-500">No Image</span>
+                        </div>
+                )}
+            </a>
+    ))}
+</div>

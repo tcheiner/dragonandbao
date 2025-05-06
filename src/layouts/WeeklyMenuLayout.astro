@@ -1,0 +1,26 @@
+---
+import CenteredImage from "../components/CenteredImage.astro";
+
+export interface Props {
+    frontmatter: {
+        image: {
+            url: string;
+            alt: string;
+        };
+        slug: string;
+        tags: string[];
+    };
+}
+
+const { frontmatter, content } = Astro.props;
+---
+
+<article class="prose mx-auto my-12">
+    <!-- Centered image -->
+    <CenteredImage src={frontmatter.image.url} alt={frontmatter.image.alt} />
+
+    <!-- Render the MDX content -->
+    <section>
+        {content}
+    </section>
+</article>

@@ -1,0 +1,20 @@
+---
+import WeeklyMenuLayout from "../../layouts/WeeklyMenuLayout.astro";
+import { getEntryBySlug } from "astro:content";
+
+// Get the dynamic slug from the URL
+const { slug } = Astro.params;
+
+// Fetch the MDX content by slug
+const menu = await getEntryBySlug("weeklyMenus", slug);
+
+if (!menu) {
+    throw new Error(`Menu not found for slug: ${slug}`);
+}
+
+const { frontmatter, Content } = menu;
+---
+
+<WeeklyMenuLayout frontmatter={frontmatter}>
+    <Content />
+</WeeklyMenuLayout>

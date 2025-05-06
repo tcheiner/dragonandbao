@@ -2,7 +2,7 @@ export const siteConfig = {
     siteData: {
         siteName: "Dragon & Bao",
         siteDescription: "Delicious rice balls and bento lunches with a fusion twist!",
-        siteUrl: "https://dragonnbao.co",
+        siteUrl: "https://dragonandbao.netlify.app",
         logoAltText: "dragon&bao",
         darkLargeBannerSrc: "/images/dragonnbao-dark-logo.png",
         lightLargeBannerSrc: "/images/dragonnbao-light-logo.png",
@@ -19,12 +19,12 @@ export const siteConfig = {
         developerGithub: "https://github.com/tcheiner/dragonnbao",
         inspirationCredit: "Inspiration Credit: Lexington Themes",
         leftHeaderNavLinks: [
-            { name: "Home", href: "https://dragonnbao.co/#" },
-            { name: "Weekly Menus", href: "https://dragonnbao.co/#" }
+            { name: "Home", href: "/#" },
+            { name: "Weekly Menus", href: "/#" }
         ],
         rightHeaderNavLinks: [
-            { name: "Login", href: "https://dragonnbao.co/#" },
-            { name: "Register", href: "https://dragonnbao.co/#" }
+            { name: "Login", href: "/#" },
+            { name: "Register", href: "/#" }
         ],
         socialLinks: [
             { name: "Trustpilot", href: "https://whatsapp.com/dragonnbao" },
