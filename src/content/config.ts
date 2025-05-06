@@ -4,10 +4,10 @@ const weeklyMenus = defineCollection({
     schema: z.object({
         slug: z.string(),
         image: z.object({
-            url: z.string(),
-            alt: z.string(),
+            url: z.string().default("/images/default.png"), // Default image URL
+            alt: z.string().default("Default image description"), // Default alt text
         }),
-        tags: z.array(z.string()),
+        tags: z.array(z.string()).optional(),
     }),
 });
 
