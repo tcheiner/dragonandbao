@@ -1,184 +1,190 @@
 @import "tailwindcss";
-@theme {
 
-  /* Charcoal  */
-  --color-charcoal-50: #eceeec;
-  --color-charcoal-100: #d7dad7;
-  --color-charcoal-200: #b0b5b0;
-  --color-charcoal-300: #889188;
-  --color-charcoal-400: #626a62;
-  --color-charcoal-500: #3e433e; /* Default */
-  --color-charcoal-600: #313531;
-  --color-charcoal-700: #252825;
-  --color-charcoal-800: #191a19;
-  --color-charcoal-900: #0c0d0c;
-
-  /* Tomato  */
-  --color-tomato-50: #ffeeeb;
-  --color-tomato-100: #ffe1dc;
-  --color-tomato-200: #febfb3;
-  --color-tomato-300: #fea090;
-  --color-tomato-400: #fd7e68;
-  --color-tomato-500: #fd6043; /* Default */
-  --color-tomato-600: #fc2803;
-  --color-tomato-700: #c01e02;
-  --color-tomato-800: #7e1401;
-  --color-tomato-900: #420a01;
-
-  /* Negroni  */
-  --color-negroni-50: #fdfaf7;
-  --color-negroni-100: #fbf5ef;
-  --color-negroni-200: #f6e8da;
-  --color-negroni-300: #f2deca;
-  --color-negroni-400: #edd1b5;
-  --color-negroni-500: #e9c7a5; /* Default */
-  --color-negroni-600: #d99e63;
-  --color-negroni-700: #c1782f;
-  --color-negroni-800: #7f4f1f;
-  --color-negroni-900: #422910;
-
-  --color-sunshade-50: #fef8ec;
-  --color-sunshade-100: #fce9c9;
-  --color-sunshade-200: #f9d18e;
-  --color-sunshade-300: #f6b253;
-  --color-sunshade-400: #f49d37;
-  --color-sunshade-500: #ed7413;
-  --color-sunshade-600: #d2520d;
-  --color-sunshade-700: #ae370f;
-  --color-sunshade-800: #8d2b13;
-  --color-sunshade-900: #742413;
-  --color-sunshade-950: #431005;
-
-
-  --color-wewak-50: #fff1f3;
-  --color-wewak-100: #ffe3e7;
-  --color-wewak-200: #ffccd6;
-  --color-wewak-300: #ff9fb2;
-  --color-wewak-400: #fe6e8e;
-  --color-wewak-500: #f83b69;
-  --color-wewak-600: #e51955;
-  --color-wewak-700: #c20e47;
-  --color-wewak-800: #a20f43;
-  --color-wewak-900: #8b103f;
-  --color-wewak-950: #4e031e;
-
-  --color-cascade-50: #f5f8f7;
-  --color-cascade-100: #dee9e7;
-  --color-cascade-200: #bcd3d0;
-  --color-cascade-300: #8ab0ab;
-  --color-cascade-400: #6b9691;
-  --color-cascade-500: #517b77;
-  --color-cascade-600: #3f625f;
-  --color-cascade-700: #364f4e;
-  --color-cascade-800: #2e4140;
-  --color-cascade-900: #293837;
-  --color-cascade-950: #141f1f;
-
-  --color-wild-sand-50: #f5f5f5;
-  --color-wild-sand-100: #efefef;
-  --color-wild-sand-200: #dcdcdc;
-  --color-wild-sand-300: #bdbdbd;
-  --color-wild-sand-400: #989898;
-  --color-wild-sand-500: #7c7c7c;
-  --color-wild-sand-600: #656565;
-  --color-wild-sand-700: #525252;
-  --color-wild-sand-800: #464646;
-  --color-wild-sand-900: #3d3d3d;
-  --color-wild-sand-950: #292929;
-
-  --color-java-50: #effcfc;
-  --color-java-100: #d7f5f6;
-  --color-java-200: #b4ebed;
-  --color-java-300: #80dce0;
-  --color-java-400: #3fc1c9;
-  --color-java-500: #2aa7b0;
-  --color-java-600: #258795;
-  --color-java-700: #246d7a;
-  --color-java-800: #265a64;
-  --color-java-900: #234c56;
-  --color-java-950: #12323a;
-
-  --color-san-juan-50: #f5f7fa;
-  --color-san-juan-100: #eaeef4;
-  --color-san-juan-200: #d0dbe7;
-  --color-san-juan-300: #a7bdd2;
-  --color-san-juan-400: #779ab9;
-  --color-san-juan-500: #567da1;
-  --color-san-juan-600: #436386;
-  --color-san-juan-700: #364f6b;
-  --color-san-juan-800: #30445c;
-  --color-san-juan-900: #2c3b4e;
-  --color-san-juan-950: #1d2734;
-
-  --color-kashmir-blue-50: #f5f7fa;
-  --color-kashmir-blue-100: #eaeef4;
-  --color-kashmir-blue-200: #d0dbe7;
-  --color-kashmir-blue-300: #a7bcd2;
-  --color-kashmir-blue-400: #7898b8;
-  --color-kashmir-blue-500: #577ba0;
-  --color-kashmir-blue-600: #47688d;
-  --color-kashmir-blue-700: #37506d;
-  --color-kashmir-blue-800: #31445b;
-  --color-kashmir-blue-900: #2c3b4e;
-  --color-kashmir-blue-950: #1e2733;
-
-  --color-aquamarine-blue-50: #f0fbfa;
-  --color-aquamarine-blue-100: #d8f4f5;
-  --color-aquamarine-blue-200: #b6e8eb;
-  --color-aquamarine-blue-300: #67ced4;
-  --color-aquamarine-blue-400: #4abdc6;
-  --color-aquamarine-blue-500: #2fa1ab;
-  --color-aquamarine-blue-600: #2a8290;
-  --color-aquamarine-blue-700: #286a76;
-  --color-aquamarine-blue-800: #285862;
-  --color-aquamarine-blue-900: #254a54;
-  --color-aquamarine-blue-950: #143038;
-
-  --color-breaker-bay-50: #f2fbfb;
-  --color-breaker-bay-100: #d3f4f3;
-  --color-breaker-bay-200: #a7e8e6;
-  --color-breaker-bay-300: #73d4d5;
-  --color-breaker-bay-400: #46b6bb;
-  --color-breaker-bay-500: #2f9fa6;
-  --color-breaker-bay-600: #22777f;
-  --color-breaker-bay-700: #1f5f66;
-  --color-breaker-bay-800: #1d4c52;
-  --color-breaker-bay-900: #1c4145;
-  --color-breaker-bay-950: #0b2328;
-}
-@font-face {
-  font-family: 'ITCBenguiatBold'; /* Font-family name */
-  src: url('/fonts/ITC Benguiat Gothic Std Bold.otf') format('opentype'); /* Corrected format */
-  font-weight: 400; /* Font weight */
-  font-style: normal; /* Font style */
-}
-
-@font-face {
-  font-family: 'Quicksand'; /* Font-family name */
-  src: url('/fonts/Quicksand-Medium.ttf') format('opentype'); /* Corrected format */
-  font-weight: 400; /* Font weight */
-  font-style: normal; /* Font style */
-}
-
-@font-face {
-  font-family: 'ToylerMedium'; /* Font-family name */
-  src: url('/fonts/TolyerNo1-Bold.ttf') format('opentype'); /* Corrected format */
-  font-weight: 400; /* Font weight */
-  font-style: normal; /* Font style */
-}
-
-/* CSS */
+/* Default (Dark Theme) */
 :root {
+  /* Charcoal */
+  --color-background: var(--color-san-juan-700);
+  --color-foreground: var(--color-wild-sand-200);
+  --color-foreground-hover: var(--color-wewak-300);
+  --color-primary: var(--color-cascade-400);
+  --color-secondary: var(--color-aquamarine-blue-300);
+  --color-accent: var(--color-spring-rain-300);
+  --color-muted: var(--color-cascade-500);
+  --color-border: var(--color-san-juan-900);
+
+  --color-charcoal-50: hsl(120, 7%, 93%);
+  --color-charcoal-100: hsl(120, 6%, 85%);
+  --color-charcoal-200: hsl(120, 5%, 73%);
+  --color-charcoal-300: hsl(120, 5%, 56%);
+  --color-charcoal-400: hsl(120, 6%, 39%);
+  --color-charcoal-500: hsl(120, 6%, 25%);
+  --color-charcoal-600: hsl(120, 6%, 19%);
+  --color-charcoal-700: hsl(120, 7%, 15%);
+  --color-charcoal-800: hsl(120, 7%, 10%);
+  --color-charcoal-900: hsl(120, 7%, 5%);
+
+  --color-tomato-50: hsl(10, 100%, 96%);
+  --color-tomato-100: hsl(10, 100%, 91%);
+  --color-tomato-200: hsl(10, 98%, 82%);
+  --color-tomato-300: hsl(10, 97%, 76%);
+  --color-tomato-400: hsl(10, 97%, 70%);
+  --color-tomato-500: hsl(10, 97%, 63%);
+  --color-tomato-600: hsl(10, 98%, 50%);
+  --color-tomato-700: hsl(10, 98%, 38%);
+  --color-tomato-800: hsl(10, 98%, 26%);
+  --color-tomato-900: hsl(10, 98%, 13%);
+
+  --color-negroni-50: hsl(30, 60%, 97%);
+  --color-negroni-100: hsl(30, 60%, 94%);
+  --color-negroni-200: hsl(30, 59%, 88%);
+  --color-negroni-300: hsl(30, 58%, 84%);
+  --color-negroni-400: hsl(30, 58%, 79%);
+  --color-negroni-500: hsl(30, 58%, 75%);
+  --color-negroni-600: hsl(30, 58%, 62%);
+  --color-negroni-700: hsl(30, 59%, 48%);
+  --color-negroni-800: hsl(30, 59%, 31%);
+  --color-negroni-900: hsl(30, 59%, 16%);
+
+  --color-sunshade-50: hsl(40, 94%, 95%);
+  --color-sunshade-100: hsl(38, 91%, 87%);
+  --color-sunshade-200: hsl(37, 88%, 74%);
+  --color-sunshade-300: hsl(36, 88%, 63%);
+  --color-sunshade-400: hsl(35, 87%, 57%);
+  --color-sunshade-500: hsl(24, 87%, 49%);
+  --color-sunshade-600: hsl(18, 91%, 42%);
+  --color-sunshade-700: hsl(14, 83%, 37%);
+  --color-sunshade-800: hsl(12, 76%, 31%);
+  --color-sunshade-900: hsl(10, 70%, 27%);
+  --color-sunshade-950: hsl(10, 66%, 16%);
+
+  --color-wewak-50: hsl(350, 100%, 97%);
+  --color-wewak-100: hsl(350, 100%, 94%);
+  --color-wewak-200: hsl(350, 100%, 89%);
+  --color-wewak-300: hsl(350, 100%, 80%);
+  --color-wewak-400: hsl(350, 98%, 70%);
+  --color-wewak-500: hsl(348, 91%, 63%);
+  --color-wewak-600: hsl(346, 83%, 50%);
+  --color-wewak-700: hsl(344, 85%, 41%);
+  --color-wewak-800: hsl(343, 80%, 35%);
+  --color-wewak-900: hsl(342, 79%, 30%);
+  --color-wewak-950: hsl(342, 90%, 15%);
+
+  --color-cascade-50: hsl(160, 18%, 96%);
+  --color-cascade-100: hsl(160, 20%, 90%);
+  --color-cascade-200: hsl(160, 23%, 80%);
+  --color-cascade-300: hsl(160, 22%, 63%);
+  --color-cascade-400: hsl(160, 16%, 51%);
+  --color-cascade-500: hsl(160, 17%, 39%);
+  --color-cascade-600: hsl(160, 21%, 31%);
+  --color-cascade-700: hsl(160, 18%, 26%);
+  --color-cascade-800: hsl(160, 17%, 22%);
+  --color-cascade-900: hsl(160, 14%, 19%);
+  --color-cascade-950: hsl(160, 24%, 10%);
+
+  --color-spring-rain-50: #f2f7f2;
+  --color-spring-rain-100: #e1ebe0;
+  --color-spring-rain-200: #b4ceb3;
+  --color-spring-rain-300: #99bc9a;
+  --color-spring-rain-400: #6d9a70;
+  --color-spring-rain-500: #4c7d51;
+  --color-spring-rain-600: #39623d;
+  --color-spring-rain-700: #2e4e33;
+  --color-spring-rain-800: #263f2a;
+  --color-spring-rain-900: #203423;
+  --color-spring-rain-950: #111d13;
+
+  --color-padua-50: #f2fbf6;
+  --color-padua-100: #e1f7eb;
+  --color-padua-200: #b8ebd0;
+  --color-padua-300: #95e0b9;
+  --color-padua-400: #5fc993;
+  --color-padua-500: #3aad72;
+  --color-padua-600: #2a8f5b;
+  --color-padua-700: #25704a;
+  --color-padua-800: #215a3e;
+  --color-padua-900: #1d4a34;
+  --color-padua-950: #0b281a;
+
+  --color-wild-sand-50: hsl(0, 0%, 96%);
+  --color-wild-sand-100: hsl(0, 0%, 93%);
+  --color-wild-sand-200: hsl(0, 0%, 86%);
+  --color-wild-sand-300: hsl(0, 0%, 74%);
+  --color-wild-sand-400: hsl(0, 0%, 60%);
+  --color-wild-sand-500: hsl(0, 0%, 49%);
+  --color-wild-sand-600: hsl(0, 0%, 40%);
+  --color-wild-sand-700: hsl(0, 0%, 32%);
+  --color-wild-sand-800: hsl(0, 0%, 27%);
+  --color-wild-sand-900: hsl(0, 0%, 24%);
+  --color-wild-sand-950: hsl(0, 0%, 16%);
+
+  --color-java-50: hsl(180, 44%, 96%);
+  --color-java-100: hsl(180, 51%, 89%);
+  --color-java-200: hsl(180, 58%, 82%);
+  --color-java-300: hsl(180, 62%, 71%);
+  --color-java-400: hsl(180, 58%, 51%);
+  --color-java-500: hsl(184, 61%, 42%);
+  --color-java-600: hsl(187, 57%, 36%);
+  --color-java-700: hsl(189, 52%, 30%);
+  --color-java-800: hsl(190, 44%, 27%);
+  --color-java-900: hsl(193, 39%, 24%);
+  --color-java-950: hsl(193, 50%, 14%);
+
+  --color-san-juan-50: hsl(210, 33%, 97%);
+  --color-san-juan-100: hsl(220, 29%, 93%);
+  --color-san-juan-200: hsl(213, 25%, 86%);
+  --color-san-juan-300: hsl(213, 30%, 76%);
+  --color-san-juan-400: hsl(213, 29%, 61%);
+  --color-san-juan-500: hsl(213, 28%, 50%);
+  --color-san-juan-600: hsl(213, 32%, 40%);
+  --color-san-juan-700: hsl(213, 32%, 31%);
+  --color-san-juan-800: hsl(213, 31%, 27%);
+  --color-san-juan-900: hsl(213, 30%, 22%);
+  --color-san-juan-950: hsl(213, 30%, 13%);
+
+  --color-aquamarine-blue-50: hsl(175, 58%, 96%);
+  --color-aquamarine-blue-100: hsl(176, 62%, 90%);
+  --color-aquamarine-blue-200: hsl(177, 63%, 81%);
+  --color-aquamarine-blue-300: hsl(183, 53%, 62%);
+  --color-aquamarine-blue-400: hsl(185, 52%, 54%);
+  --color-aquamarine-blue-500: hsl(187, 56%, 43%);
+  --color-aquamarine-blue-600: hsl(190, 54%, 36%);
+  --color-aquamarine-blue-700: hsl(192, 46%, 31%);
+  --color-aquamarine-blue-800: hsl(193, 40%, 27%);
+  --color-aquamarine-blue-900: hsl(195, 35%, 24%);
+  --color-aquamarine-blue-950: hsl(195, 40%, 14%);
+
+  --color-breaker-bay-50: hsl(175, 56%, 96%);
+  --color-breaker-bay-100: hsl(174, 56%, 90%);
+  --color-breaker-bay-200: hsl(174, 56%, 80%);
+  --color-breaker-bay-300: hsl(175, 57%, 65%);
+  --color-breaker-bay-400: hsl(176, 52%, 51%);
+  --color-breaker-bay-500: hsl(184, 54%, 42%);
+  --color-breaker-bay-600: hsl(186, 56%, 31%);
+  --color-breaker-bay-700: hsl(187, 52%, 26%);
+  --color-breaker-bay-800: hsl(188, 47%, 22%);
+  --color-breaker-bay-900: hsl(189, 42%, 19%);
+  --color-breaker-bay-950: hsl(190, 48%, 10%);
+
   /* Typography */
   font-feature-settings: "liga" 1, "calt" 1,
-    /* Contextual Alternates */ "dlig" 1, /* Discretionary Ligatures */ "ss07" 1,
-    /* fSquare punctuation */ "ss08" 1, /* Square quotes */ "zero" 1,
-    /* Slashed zero */ "tnum" 1, /* Tabular numbers */ "cv03" 1,
-    /* Open six */ "cv04" 1, /* Open nine */ "cv01" 1,
-    /* Alternate one */ "cv09", /* Flat-top three */ "cv02" 1; /* Open 4 */
+  "dlig" 1, "ss07" 1, "ss08" 1, "zero" 1,
+  "tnum" 1, "cv03" 1, "cv04" 1, "cv01" 1,
+  "cv09" 1, "cv02" 1;
   font-family: Inter, sans-serif;
   font-variant-numeric: tabular-nums;
 }
+
+/* Light Theme (Ready to enable later) */
+:root.light-theme {
+  --color-background: var(--color-wild-sand-200);
+  --color-foreground: var(--color-san-juan-700);
+  --color-primary: var(--color-tomato-300);
+  --color-secondary: var(--color-negroni-700);
+  --color-accent: var(--color-sunshade-400);
+  --color-muted: var(--color-charcoal-200);
+  --color-border: var(--color-charcoal-100);
+}
+
 @supports (font-variation-settings: normal) {
   /* Use variable font if supported */
   :root {
@@ -186,7 +192,79 @@
   }
 }
 
+/* General Styles */
+html, body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-primary);
+}
+
+a {
+  color: var(--color-accent);
+}
+
+button {
+  background-color: var(--color-primary);
+  color: var(--color-foreground);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-background);
+}
+
+/* Header */
+.header {
+  background-color: var(--color-background); /* Use theme background */
+  color: var(--color-foreground); /* Use theme foreground */
+  padding: 0.75rem 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Navigation Container */
+.nav-container {
+  display: flex;
+  justify-content: space-between; /* Push left and right links to opposite sides */
+  align-items: center; /* Vertically center the items */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.nav-links-left,
+.nav-links-right {
+  display: flex;
+  gap: 1.5rem; /* Space between links */
+}
+
+.nav-links-left a,
+.nav-links-right a {
+  text-decoration: none;
+  color: var(--color-foreground);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links-left a:hover,
+.nav-links-right a:hover {
+  color: var(--color-primary);
+}
+
+/* Hamburger Menu */
 .hamburger {
+  display: none;
   padding-right: 20px;
   cursor: pointer;
 }
@@ -196,9 +274,40 @@
   width: 40px;
   height: 5px;
   margin-bottom: 10px;
-  background-color: #ff9776;
+  background-color: var(--color-primary);
 }
 
-.hamburger {
+.hamburger-button {
   display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .hamburger-button {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--color-background);
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 8px 8px;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
 }

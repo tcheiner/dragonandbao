@@ -1,9 +1,11 @@
+const {heroui} = require('@heroui/theme');
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: [
-        './src/**/*.{astro,html,js,jsx,ts,tsx}', // Include all relevant file types
-        './public/**/*.html', // Include public HTML files
-    ],
+  content: [
+    "./src/**/*.{astro,html,js,jsx,ts,tsx}",
+    "./public/**/*.html",
+    "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}"
+  ],
     theme: {
         extend: {
             fontFamily: {
@@ -39,7 +41,7 @@ module.exports = {
                     900: '#293837',
                     950: '#141f1f',
                 },
-                'wild-sand': {
+                wildsand: {
                     50: '#f5f5f5',
                     100: '#efefef',
                     200: '#dcdcdc',
@@ -65,7 +67,7 @@ module.exports = {
                     900: '#234c56',
                     950: '#12323a',
                 },
-                'san-juan': {
+                sanjuan: {
                     50: '#f5f7fa',
                     100: '#eaeef4',
                     200: '#d0dbe7',
@@ -78,7 +80,7 @@ module.exports = {
                     900: '#2c3b4e',
                     950: '#1d2734',
                 },
-                'kashmir-blue': {
+                kashmirblue: {
                     50: '#f5f7fa',
                     100: '#eaeef4',
                     200: '#d0dbe7',
@@ -91,7 +93,7 @@ module.exports = {
                     900: '#2c3b4e',
                     950: '#1e2733',
                 },
-                'aquamarine-blue': {
+                aquamarineblue: {
                     50: '#f0fbfa',
                     100: '#d8f4f5',
                     200: '#b6e8eb',
@@ -104,7 +106,7 @@ module.exports = {
                     900: '#254a54',
                     950: '#143038',
                 },
-                'breaker-bay': {
+                breakerbay: {
                     50: '#f2fbfb',
                     100: '#d3f4f3',
                     200: '#a7e8e6',
@@ -120,5 +122,6 @@ module.exports = {
             },
         },
     },
-    plugins: [],
+    darkMode: "class",
+  plugins: [heroui()],
 };

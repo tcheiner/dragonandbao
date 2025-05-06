@@ -9,7 +9,7 @@ export default defineConfig({
         plugins: [tailwindcss()],
     },
     // Add your domain here
-    site: 'https://lexingtonthemes.com',
+    site: 'https://dragonnbao.co',
     integrations: [
         sitemap(),
         react(),

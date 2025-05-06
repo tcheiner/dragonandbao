@@ -1,30 +1,58 @@
 [
   {
-    "image": "https://cdn.dribbble.com/users/1622978/screenshots/16873134/media/7f5d72bce5b94fe1ae56484394de673f.jpg?compress=1&resize=1600x1200&vertical=top",
-    "alt_desc": "Paper bags with print",
-    "name": "Paper bags with print",
-    "desc": "Paper bags with print",
-    "cost": "$20.00"
+    "image": "https://media1.tenor.com/m/cBdxn35dk08AAAAd/anime-food.gif",
+    "alt_desc": "Riceball Cooking Class",
+    "name": "Various types of riceballs - large(adults or teens) or small(toddlers).",
+    "desc": "Vegan or various flavored meat fillings of asian flavors.  2 hr class in Buitenveldert. Minimum 4 participants.",
+    "cost": "€120.00"
   },
   {
-    "image": "https://cdn.dribbble.com/users/1622978/screenshots/16873134/media/8ea407efd5f947aa6a37488cfe305269.jpg?compress=1&resize=1600x1200&vertical=top",
-    "alt_desc": "Basic Tee bag",
-    "name": "Basic Tee bag",
-    "desc": "Olive/Orange",
-    "cost": "$35.00"
+    "image": "https://i.pinimg.com/originals/cf/2f/b4/cf2fb45dc3a63e8eb8e6bbac7907c02b.gif",
+    "alt_desc": "Ramen Cooking Class",
+    "name": "Chicken or Pork Ramen Cooking class",
+    "desc": "3 hr class in Buitenveldert. Minimum 4 participants.",
+    "cost": "€180.00"
   },
   {
-    "image": "https://cdn.dribbble.com/users/1622978/screenshots/16397986/media/75e59a9fcf94b8a51764df66ce7a1d4f.jpg?compress=1&resize=1600x1200&vertical=top",
-    "alt_desc": "Coffee Bag",
-    "name": "Coffee Bag",
-    "desc": "Developer. Black. Strong.",
-    "cost": "$50.00"
+    "image": "https://media1.tenor.com/m/cBdxn35dk08AAAAd/anime-food.gif",
+    "alt_desc": "Kimchi Class",
+    "name": "Kimchi Making class",
+    "desc": "3 hr class in Buitenveldert.  Minimum 8 participants.",
+    "cost": "€180.00"
   },
   {
-    "image": "https://cdn.dribbble.com/userupload/2739254/file/original-ac8226a7213611e49363fc0176a48cb0.jpg?compress=1&resize=1504x1128",
-    "alt_desc": "Coffee Bag",
-    "name": "Coffee Bag",
-    "desc": "Designer. Black. Strong.",
-    "cost": "$50.00"
+    "image": "/images/riceball.png",
+    "alt_desc": "Riceball",
+    "name": "Single Riceball (Large) Lunch",
+    "desc": "One cup of cooked japanese short-grained rice, deep-fried chicken or pork katsu, cucumbers, pickled daikon, with fruit companions",
+    "cost": "€15.00"
+  },
+  {
+    "image": "/images/toddler-riceball.png",
+    "alt_desc": "Toddler riceball lunches",
+    "name": "Single toddler riceball lunch",
+    "desc": "Smaller riceballs for toddlers, with fruit and veggie companions",
+    "cost": "€5.00"
+  },
+  {
+    "image": "/images/toddler-sandwiches.png",
+    "alt_desc": "Toddler Party Sandwich Lunches",
+    "name": "Single toddler sandwich lunch",
+    "desc": "Small sandwich lunch (protein packed with meat and cheese) for toddlers, with fruit and veggie companions",
+    "cost": "€7.00 per lunch"
+  },
+  {
+    "image": "https://img.freepik.com/premium-vector/exercise-i-thought-you-said-extra-rice_639486-2318.jpg?w=740",
+    "alt_desc": "Riceball Tee",
+    "name": "Riceball Tee",
+    "desc": "Do you love rice and much as we do?!? Celebrate with a tee!",
+    "cost": "€30.00"
+  },
+  {
+    "image": "https://img.freepik.com/premium-vector/exercise-i-thought-you-said-extra-rice_639486-2318.jpg?w=740",
+    "alt_desc": "Riceball Tote",
+    "name": "Riceball Tote",
+    "desc": "Do you love rice and much as we do?!? Shout it out loud with a tote!",
+    "cost": "€30.00"
   }
 ]
