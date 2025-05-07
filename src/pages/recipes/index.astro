@@ -6,9 +6,12 @@ import ProjectCard from '../../components/ProjectCard.astro'
 // Get all recipes
 const allRecipes = await getCollection('recipes');
 
-// Sort by date
+// Sort by date if available, otherwise by title
 allRecipes.sort((a: any, b: any) => {
-    return new Date(b.data.startDate) - new Date(a.data.startDate);
+    if (a.data.startDate && b.data.startDate) {
+        return new Date(b.data.startDate) - new Date(a.data.startDate);
+    }
+    return a.data.title.localeCompare(b.data.title);
 });
 
 // Pagination

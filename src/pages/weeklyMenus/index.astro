@@ -6,9 +6,12 @@ import { getCollection } from "astro:content";
 // read mdx files from weeklyMenus folder as entities
 const allPosts = await getCollection('weeklyMenus');
 
-// sort projects by dateStart DESC
+// sort by dateStart DESC if available, otherwise by title
 allPosts.sort((a: any, b: any) => {
-    return new Date(b.data.startDate) - new Date(a.data.startDate);
+    if (a.data.startDate && b.data.startDate) {
+        return new Date(b.data.startDate) - new Date(a.data.startDate);
+    }
+    return a.data.title.localeCompare(b.data.title);
 });
 
 // Pagination

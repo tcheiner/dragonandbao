@@ -3,23 +3,25 @@ import { defineCollection, z } from "astro:content";
 const weeklyMenusCollection = defineCollection({
     type: "content",
     schema: z.object({
-        slug: z.string(),
         title: z.string(),
+        description: z.string().optional(),
+        startDate: z.string().optional(),
         image: z
             .object({
                 url: z.string(),
                 alt: z.string(),
             })
             .optional(),
-        tags: z.array(z.string()),
+        tags: z.array(z.string()).optional(),
     }),
 });
 
 const recipeCollection = defineCollection({
     type: "content", // Content type for recipes
     schema: z.object({
-        slug: z.string(),
         title: z.string(), // Recipe title
+        description: z.string().optional(), // Recipe description
+        startDate: z.string().optional(), // Date for sorting
         creditUrl: z.string().url().optional(), // Optional URL for credit/source
         image: z.object({
             url: z.string(), // Image URL
@@ -31,10 +33,9 @@ const recipeCollection = defineCollection({
         cookTime: z.number().optional(), // Cooking time in minutes
         servings: z.number().optional(), // Number of servings
         calories: z.string().optional(), // Calories as a string (e.g., "339k")
-        tags: z.array(z.string()), // Tags for categorization
+        tags: z.array(z.string()).optional(), // Tags for categorization
     }),
 });
-
 
 export const collections = {
     recipes: recipeCollection,

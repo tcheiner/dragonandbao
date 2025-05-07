@@ -6,9 +6,12 @@ import { getCollection } from "astro:content";
 export async function getStaticPaths({ paginate }) {
   const allPosts = await getCollection('weeklyMenus');
   
-  // Sort by date
+  // Sort by date if available, otherwise by title
   allPosts.sort((a, b) => {
-    return new Date(b.data.startDate) - new Date(a.data.startDate);
+    if (a.data.startDate && b.data.startDate) {
+      return new Date(b.data.startDate) - new Date(a.data.startDate);
+    }
+    return a.data.title.localeCompare(b.data.title);
   });
   
   // Generate pages with 16 items per page (4x4 grid)
