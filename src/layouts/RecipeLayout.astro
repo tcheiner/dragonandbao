@@ -17,37 +17,85 @@ const { slug, title, creditUrl, image, idealImage, realisticImage, prepTime, coo
         <p><strong>Cook Time:</strong> {cookTime} minutes</p>
         <p><strong>Servings:</strong> {servings}</p>
         <p><strong>Calories:</strong> {calories}</p>
-        <p><strong>Tags:</strong> {tags.join(', ')}</p>
+        <p><strong>Tags:</strong> {tags?.join(', ')}</p>
     </section>
 
     <section class="recipe-images">
-        <div>
-            <h3>Ideal Image</h3>
-            <img src={idealImage} alt={`Ideal version of ${title}`} />
-        </div>
-        <div>
-            <h3>Realistic Image</h3>
-            <img src={realisticImage} alt={`Realistic version of ${title}`} />
-        </div>
+        {idealImage && (
+            <div>
+                <h3>Ideal Image</h3>
+                <img src={idealImage} alt={`Ideal version of ${title}`} />
+            </div>
+        )}
+        {realisticImage && (
+            <div>
+                <h3>Realistic Image</h3>
+                <img src={realisticImage} alt={`Realistic version of ${title}`} />
+            </div>
+        )}
     </section>
 
     <section class="recipe-content">
-        <div class="section ingredients">
-            <h2>Ingredients</h2>
-            <slot name="ingredients" />
-        </div>
-
-        <div class="section instructions">
-            <h2>Instructions</h2>
-            <slot name="instructions" />
-        </div>
-
-        <div class="section notes">
-            <h2>Notes</h2>
-            <slot name="notes" />
-        </div>
+        <slot />
     </section>
 </article>
+
+<style>
+    .recipe {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 1rem;
+    }
+
+    .recipe header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .recipe-meta {
+        margin-bottom: 2rem;
+        background: #f9f9f9;
+        padding: 1rem;
+        border-radius: 8px;
+    }
+
+    .recipe-images {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .recipe-images div {
+        flex: 1;
+        text-align: center;
+    }
+
+    .recipe-images img {
+        max-width: 100%;
+        border-radius: 8px;
+    }
+
+    .recipe-content {
+        margin-bottom: 2rem;
+    }
+
+    .recipe-content h2 {
+        color: #0288d1;
+        border-bottom: 2px solid #e0e0e0;
+        padding-bottom: 0.5rem;
+        margin-top: 2rem;
+    }
+
+    .recipe-content ul, .recipe-content ol {
+        padding-left: 1.5rem;
+    }
+
+    .recipe-content li {
+        margin-bottom: 0.5rem;
+    }
+</style>
 
 <style>
     .recipe {
