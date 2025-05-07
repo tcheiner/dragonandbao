@@ -5,6 +5,7 @@ import ProjectCard from '../../components/ProjectCard.astro'
 
 // Get all recipes
 const allRecipes = await getCollection('recipes');
+console.log("Found recipes:", allRecipes.length, allRecipes.map(r => r.slug));
 
 // Sort by date if available, otherwise by title
 allRecipes.sort((a: any, b: any) => {

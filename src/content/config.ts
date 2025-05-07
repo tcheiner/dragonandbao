@@ -19,10 +19,11 @@ const weeklyMenusCollection = defineCollection({
 const recipeCollection = defineCollection({
     type: "content", // Content type for recipes
     schema: z.object({
+        slug: z.string().optional(), // Optional slug override
         title: z.string(), // Recipe title
         description: z.string().optional(), // Recipe description
         startDate: z.string().optional(), // Date for sorting
-        creditUrl: z.string().url().optional(), // Optional URL for credit/source
+        creditUrl: z.string().optional(), // Optional URL for credit/source
         image: z.object({
             url: z.string(), // Image URL
             alt: z.string(), // Alt text for the image
