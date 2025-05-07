@@ -1,7 +1,7 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { getCollection } from "astro:content";
-import { PROFILE } from "@/content/profileData.ts";
+import { siteConfig } from "@/content/siteConfig.ts";
 
 
 /**
@@ -24,12 +24,12 @@ export const getUserTimeZoneInBrowser = (): string => {
 };
 
 const getLocalLanguage = (): string => {
-  return PROFILE.language;
+  return siteConfig.siteData.language;
 }
 
 export const formateLocalDate = (
   date: Date,
-  timeZone: string = PROFILE.timezone,
+  timeZone: string = siteConfig.siteData.timezone,
 ): string => {
   return new Intl.DateTimeFormat(getLocalLanguage(), {
     year: "numeric",
@@ -41,7 +41,7 @@ export const formateLocalDate = (
 
 export const formateLocalMonth = (
   date: Date,
-  timeZone: string = PROFILE.timezone,
+  timeZone: string = siteConfig.siteData.timezone,
 ): string => {
   return new Intl.DateTimeFormat(getLocalLanguage(), {
     year: "numeric",
@@ -51,21 +51,15 @@ export const formateLocalMonth = (
 };
 
 export const getAndGroupUniqueTags = async (): Promise<Map<string, any[]>> => {
-  const allProjects = await getCollection("projects");
-  const allExperiences = await getCollection("experiences");
-  const books = await getCollection("books");
-  const posts = await getCollection("posts");
+  const weeklyMenus = await getCollection("weeklyMenus");
   const recipes = await getCollection("recipes");
 
-  const allItems = [...allProjects, ...allExperiences, ...books, ...posts];
+  const allItems = [...weeklyMenus, ...recipes];
 
   // @ts-ignore
   const uniqueTags: string[] = [
-    ...new Set(allProjects.map((post: any) => post.data.tags).flat()),
-    ...new Set(allExperiences.map((post: any) => post.data.tags).flat()),
-    ...new Set(books.map((post: any) => post.data.tags).flat()),
-    ...new Set(posts.map((post: any) => post.data.tags).flat()),
-    ...new Set(recipes.map((post: any) => post.data.tags).flat()),
+    ...new Set(weeklyMenus.map((post: any) => post.data.tags).flat()),
+    ...new Set(recipes.map((post: any) => post.data.tags).flat())
   ];
   const tagItemsMap = new Map<string, any[]>();
 
