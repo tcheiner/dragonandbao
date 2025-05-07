@@ -15,7 +15,7 @@ console.log("Found recipes:", allRecipes.length, allRecipes.map(r => r.slug));
             <p class="text-lg text-gray-600">Browse our delicious recipes</p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mx-auto place-items-center">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto place-items-center">
             {allRecipes.map((recipe) => (
                 <a href={`/recipes/${recipe.slug}`} class="group">
                     <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 group-hover:shadow-lg group-hover:-translate-y-1">
