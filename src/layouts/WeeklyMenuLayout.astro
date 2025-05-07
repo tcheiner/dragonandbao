@@ -20,25 +20,29 @@ const {title, description, image, startDate, tags, canonical} = frontmatter;
                 </div>
         }
 
-        {image && image.url && (
-            <div class="mx-auto mb-8 max-w-3xl">
+        <div class="mx-auto mb-8 max-w-3xl">
+            {image && image.url && (
                 <img 
                     src={image.url} 
                     alt={image.alt || title} 
                     class="w-full h-auto rounded-lg shadow-md"
                 />
-            </div>
-        )}
-        {/* Fallback for string-based image path */}
-        {(!image || !image.url) && frontmatter.image && (
-            <div class="mx-auto mb-8 max-w-3xl">
+            )}
+            {(!image || !image.url) && frontmatter.image && typeof frontmatter.image === 'string' && (
                 <img 
-                    src={typeof frontmatter.image === 'string' ? frontmatter.image : frontmatter.image.url} 
-                    alt={typeof frontmatter.image === 'string' ? title : (frontmatter.image.alt || title)} 
+                    src={frontmatter.image} 
+                    alt={title} 
                     class="w-full h-auto rounded-lg shadow-md"
                 />
-            </div>
-        )}
+            )}
+            {(!image || !image.url) && frontmatter.image && typeof frontmatter.image === 'object' && frontmatter.image.url && (
+                <img 
+                    src={frontmatter.image.url} 
+                    alt={frontmatter.image.alt || title} 
+                    class="w-full h-auto rounded-lg shadow-md"
+                />
+            )}
+        </div>
 
         <article class="prose mx-auto dark:prose-invert recipe-card-body">
             <!--required with tailwind typography plugin + prose to render html-->
