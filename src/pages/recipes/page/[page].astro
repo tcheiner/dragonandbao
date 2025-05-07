@@ -32,9 +32,9 @@ const currentPage = page.currentPage;
                     key={entity.data.title}
                     href={'/recipes/' + entity.slug}
                     heading={entity.data.title}
-                    subheading={entity.data.description}
-                    altText={entity.data?.image?.alt}
-                    imagePath={entity.data?.image?.url}
+                    subheading={entity.data.description || entity.data.title}
+                    altText={entity.data?.image?.alt || `Image of ${entity.data.title}`}
+                    imagePath={entity.data?.image?.url || entity.data.idealImage || "/images/dragonnbao-light-logo.png"}
                     dateStart={entity.data.startDate}
                 />
             ))
