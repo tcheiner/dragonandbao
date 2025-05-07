@@ -1,0 +1,84 @@
+---
+slug: "2025-05-07"
+title: "Bavarian German Pretzels"
+creditUrl: "https://www.joshuaweissman.com/post/homemade-pretzels"
+image:
+  url: "/images/cooking/pear-almond-cake.png"
+  alt: "pear almond cake"
+idealImage: "/images/cooking/pear-almond-cake-ideal.jpg"
+realisticImage: "/images/cooking/pear-almond-cake-realistic.jpg"
+prepTime: 20
+cookTime: 60
+servings: 10
+calories: "339k"
+tags:
+  - "dessert"
+  - "cake"
+  - "pear"
+  - "almond"
+  - "baking"
+---
+
+# Pear Almond Cake
+<slot name="ingredients">
+  - 4 cup flour (632g)
+
+      1g diastatic malt powder (optional)
+
+      12g salt
+
+      1.5. tablespoons (13g) instant yeast
+
+      1.5 cups (365g) water percent lukewarm water @ 95f 35c
+
+      1.5 tablespoon (21g) butter softened
+
+      Lye Solution (please use a food scale to be accurate here):
+
+      1000g cold water
+
+      30g lye beads (this equates to a 3% solution)
+
+      Baking Soda Alternative to Lye (be aware that your pretzels will be different in color and flavor if you go this route):
+
+      1000g cold water  60g baking soda
+</slot>
+
+<slot name="instructions">
+    1. Primed Yeast
+
+       Mix yeast and water. Let sit in warm area ten minutes before using.
+
+       Dough
+
+       Incorporate yeast and water mix into dry ingredient bowl using medium-low speed.
+
+       Gradually add butter, then mix 2-3 more minutes until fully mixed and elastic.
+
+       Proof for 15 minutes with damp towel on top.
+
+       Divide do into 8 pieces weighing 127 g.
+
+       Lightly shape dough in a fat log 4 in or 1 cm long.
+
+       Place in baking sheet greased with oil. Cover with damp towel or plastic wrap and let rest for 5 minutes.
+
+       When shaping pretzel dough, start from center, increase pressure as you reach ends to get a tapered effect until getting a long tapered torpedo 20 in or 50 cm long (think about a giant earthworm here, fat in the middle skinny on the ends).
+
+       Take the two ends, bring them together, gently cross over each other.
+
+       Twist end pieces once, gently bring it down to front and attach those legs to the base line on oiled sheet tray, cover and proof for 30 min.
+
+       Put in fridge to cool, prep lye solution
+       LYE SOLUTION: 1000 g cold water to 30g of food grade lye beads. Whisk until all are dissolved. IMPORTANT: USE GLOVES!
+
+       Drop in solution 10 seconds per side. Place on wire rack setup over drain excess lye mixture. Make sure rack is greased otherwise it sticks.
+
+       Slash base or thickest part of pretzel with razor blade
+
+       Finish with flaky salt, then bake at 425 F or 218 C for 15-20 min or until golden brown.</slot>
+
+<slot name="notes">
+    - **Measuring Flour:** Aerate the flour before measuring to avoid dry dough.
+    - **Baking Tips:** Use a convection oven if possible. Bake on the middle rack in a fully preheated oven.
+</slot>

@@ -1,0 +1,50 @@
+---
+slug: "2025-05-06"
+title: "Pear Almond Cake"
+creditUrl: "https://juliasalbum.com/pear-almond-cake/"
+image:
+  url: "/images/cooking/pear-almond-cake.png"
+  alt: "pear almond cake"
+idealImage: "/images/cooking/pear-almond-cake-ideal.jpg"
+realisticImage: "/images/cooking/pear-almond-cake-realistic.jpg"
+prepTime: 20
+cookTime: 60
+servings: 10
+calories: "339k"
+tags:
+  - "dessert"
+  - "cake"
+  - "pear"
+  - "almond"
+  - "baking"
+---
+
+# Pear Almond Cake
+<slot name="ingredients">
+    - 250 g all-purpose flour or baking flour, sifted or aerated (see note below)
+    - 2 teaspoons baking powder
+    - 200 g white granulated sugar
+    - 113.4 g salted butter melted
+    - 2 eggs
+    - 236.59 ml plain low-fat Greek yogurt
+    - 1 teaspoon pure vanilla extract
+    - 1 teaspoon almond extract or Amaretto liqueur
+    - 3 medium pears firm texture, cored and peeled
+    - 46 g sliced almonds
+</slot>
+
+<slot name="instructions">
+    1. Preheat oven to 350°F. If your oven has a convection setting, use a convection bake setting. Line the bottom of the 9x3-inch springform pan with parchment paper.
+    2. In a medium bowl, mix flour and baking powder.
+    3. In a large bowl, combine sugar, melted butter, and eggs, and beat using a whisk for about 1 or 2 minutes until the mixture becomes smooth, light in color, and fluffy.
+    4. Mix in Greek yogurt, vanilla, and almond extract, and whisk just until combined.
+    5. Add the flour mixture gradually, adding 1 cup at a time. Do not over-mix.
+    6. Chop one peeled and cored pear into small chunks. Fold the chopped pear into the cake batter.
+    7. Pour the cake batter into the parchment paper-lined springform pan. Arrange pear slices tightly on top of the cake in a circular pattern. Top with sliced almonds.
+    8. Bake for about 50 minutes or 1 hour until the tester comes out clean. Remove the cake and let cool before serving.
+</slot>
+
+<slot name="notes">
+    - **Measuring Flour:** Aerate the flour before measuring to avoid dry dough.
+    - **Baking Tips:** Use a convection oven if possible. Bake on the middle rack in a fully preheated oven.
+</slot>

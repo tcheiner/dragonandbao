@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content'; // For fetching MDX files
+import RecipeLayout from '../../layouts/RecipeLayout.astro'; // Import the layout
+
+// Get the `slug` parameter from the URL
+const { slug } = Astro.params;
+
+export async function getStaticPaths() {
+    const recipeEntries = await getCollection('recipes');
+    return recipeEntries.map((entry) => ({
+        params: {slug: entry.slug},
+        props: {entry},
+    }));
+}
+
+const {entry} = Astro.props;
+const {Content} = await entry.render();
+const data = entry.data;
+---
+
+<RecipeLayout
+        slug={data.slug}
+        title={data.title}
+        creditUrl={data.creditUrl}
+        image={data.image}
+        idealImage={data.idealImage}
+        realisticImage={data.realisticImage}
+        prepTime={data.prepTime}
+        cookTime={data.cookTime}
+        servings={data.servings}
+        calories={data.calories}
+        tags={data.tags}
+>
+    <slot name="ingredients"></slot>
+    <slot name="instructions"></slot>
+</RecipeLayout>

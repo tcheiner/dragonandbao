@@ -1,3 +1,20 @@
+---
+import ProjectCard from '../../components/ProjectCard.astro'
+import IndexPageLayout from "../../layouts/IndexPageLayout.astro";
+import { getCollection } from "astro:content";
+
+
+import IndexPageLayout from "../../layouts/IndexPageLayout.astro";
+
+
+// read mdx files from projects folder as entities
+const posts = await getCollection('weeklyMenus');
+
+// sort projects by dateStart DESC
+posts.sort((a: any, b: any) => {
+    return new Date(b.data.startDate) - new Date(a.data.startDate);
+    });
+---
 <!-- -&#45;&#45;-->
 <!--import "../../styles/global.css"; // Import global styles-->
 <!--import { getCollection } from "astro:content";-->
@@ -52,23 +69,6 @@
 <!--            </a>-->
 <!--    ))}-->
 <!--</div>-->
-
----
-import ProjectCard from '../../components/ProjectCard.astro'
-import { getCollection } from "astro:content";
-
-
-import IndexPageLayout from "../../layouts/IndexPageLayout.astro";
-
-
-// read mdx files from projects folder as entities
-const posts = await getCollection('weeklyMenus');
-
-// sort projects by dateStart DESC
-posts.sort((a: any, b: any) => {
-    return new Date(b.data.startDate) - new Date(a.data.startDate);
-    });
----
 
 <IndexPageLayout title="Blog" description="What is top of mind for me today"
                  subTitle="TCHeiner Blog">

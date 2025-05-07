@@ -2,7 +2,7 @@
 import "../styles/global.css";
 import shop from '../data/shopDB.json';
 import ShopItem from './ShopItem.astro';
-import  {siteConfig} from '../config/siteConfig.js';
+import  {siteConfig} from '../content/siteConfig.js';
 ---
 <main  class="relative overflow-hidden">
     <div class="relative mx-auto px-8 max-w-7xl py-12  md:px-12">
@@ -15,7 +15,7 @@ import  {siteConfig} from '../config/siteConfig.js';
                 And if you’re heading out on an adventure, our travel rations are guaranteed to keep your belly
                 full and happy! What sounds good today?<br/>
                 </p>
-            <div class="grid grid-cols-1 gap-6 lg:gap-y-32 md:grid-cols-2 ">
+            <div class="grid grid-cols-1 gap-6 lg:gap-y-32 md:grid-cols-2 md:grid-cols-1 ">
                 {shop.map((item) => (
                         <ShopItem
                                 image={item.image}

@@ -14,21 +14,7 @@ export default defineConfig({
     integrations: [
         sitemap(),
         react(),
-        mdx()
+        mdx(),
     ],
-    content: {
-        collections: {
-            weeklyMenus: {
-                schema: ({ z }) =>
-                    z.object({
-                        slug: z.string(),
-                        image: z.object({
-                            url: z.string(),
-                            alt: z.string(),
-                        }),
-                        tags: z.array(z.string()),
-                    }),
-            },
-        },
-    },
+
 });
