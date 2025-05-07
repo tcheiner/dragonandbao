@@ -1,3 +1,110 @@
 
 # 2025-05-07 20:08:23.652132
 +y
+
+# 2025-05-07 20:15:47.999668
++when in mobile mode, the shopitem images get chopped off on the right side.
+
+# 2025-05-07 20:20:45.674689
++how do i connect to claude sonnet with an api key?
+
+# 2025-05-07 20:22:29.791360
++test
+
+# 2025-05-07 20:22:49.471346
++when in mobile mode, the shopitem images get chopped off on the right side.
+
+# 2025-05-07 20:23:01.282149
++y
+
+# 2025-05-07 20:23:54.335890
++as long as i have a constrained aspect ratio of  the images, any reasonable size for each screen is acceptable.
+
+# 2025-05-07 20:24:33.094658
++can you check it in?
+
+# 2025-05-07 20:24:43.038781
++y
+
+# 2025-05-07 20:24:43.105645
++/run git commit -m "feat: add aspect-square wrapper to maintain image proportions in ShopItem"
+
+# 2025-05-07 20:24:43.106073
++/run git commit -m "feat: add aspect-square wrapper to maintain image proportions in ShopItem"
+
+# 2025-05-07 20:25:02.235789
++y
+
+# 2025-05-07 20:27:39.506593
++i also have content in /src/content/weeklyMenus and /src/content/recipes/, they are in mdx format.  the index page should be in src/pages/recipe/index.astro and src/pages/weeklyMenus/index.astro, it should be displayed in a grid format, 4 x 4 and paginated.
+
+# 2025-05-07 20:27:43.332419
++y
+
+# 2025-05-07 20:32:11.558299
++please fix : 20:30:49 [watch] src/content/recipes/choc-chip-cookie.txt
++The collection "recipes" does not exist or is empty. Please check your content config file for errors.
+
+# 2025-05-07 20:32:15.071206
++y
+
+# 2025-05-07 20:33:35.687360
++[InvalidContentEntryDataError] recipes → blueberry-muffin data does not match collection schema.
++title: Required
++  Hint:
++    See https://docs.astro.build/en/guides/content-collections/ for more information on content schemas.
++  Error reference:
++    https://docs.astro.build/en/reference/errors/invalid-content-entry-data-error/
++  Location:
++    /Users/crombie/tcheiner/dragonandbao/src/content/recipes/blueberry-muffin.mdx:0:0
++  Stack trace:
++    at getEntryDataAndImages (file:///Users/crombie/tcheiner/dragonandbao/node_modules/astro/dist/content/utils.js:150:26)
++    at async syncData (file:///Users/crombie/tcheiner/dragonandbao/node_modules/astro/dist/content/loaders/glob.js:94:28)
+
+# 2025-05-07 20:33:40.476096
++y
+
+# 2025-05-07 20:38:58.119055
++/recipes is not showing the one pear almond cake recipe
+
+# 2025-05-07 20:39:34.049250
++src/content/recipes is not showing the one mdx recipe in http://localhost:4321/recipes
+
+# 2025-05-07 20:39:39.539562
++y
+
+# 2025-05-07 20:40:25.624545
++yy
+
+# 2025-05-07 20:40:32.252982
++all
+
+# 2025-05-07 20:41:53.570279
++n
+
+# 2025-05-07 20:42:09.682792
++src/content/recipes is not showing the one mdx recipe in http://localhost:4321/recipes
+
+# 2025-05-07 20:42:14.298368
++y
+
+# 2025-05-07 20:43:28.948064
++n
+
+# 2025-05-07 20:43:38.671397
++src/content/recipes is not showing the one mdx recipe in http://localhost:4321/recipes/
+
+# 2025-05-07 20:43:40.671607
++y
+
+# 2025-05-07 20:46:38.289117
++it looks like BaseLayout.astro.  it has the navigation header but no banner, no footer, no recipe
+
+# 2025-05-07 20:46:42.766345
++y
+
+# 2025-05-07 20:48:19.027346
++n
+
+# 2025-05-07 20:49:44.239497
++can you fix the index.astro under src/pages/weeklyMenus/?
