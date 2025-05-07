@@ -20,7 +20,7 @@ const {title, description, image, startDate, tags, canonical} = frontmatter;
                 </div>
         }
 
-        {image && (
+        {image && image.url && (
             <div class="mx-auto mb-8 max-w-3xl">
                 <img 
                     src={image.url} 
@@ -30,11 +30,11 @@ const {title, description, image, startDate, tags, canonical} = frontmatter;
             </div>
         )}
         {/* Fallback for string-based image path */}
-        {!image && frontmatter.image && (
+        {(!image || !image.url) && frontmatter.image && (
             <div class="mx-auto mb-8 max-w-3xl">
                 <img 
-                    src={frontmatter.image} 
-                    alt={title} 
+                    src={typeof frontmatter.image === 'string' ? frontmatter.image : frontmatter.image.url} 
+                    alt={typeof frontmatter.image === 'string' ? title : (frontmatter.image.alt || title)} 
                     class="w-full h-auto rounded-lg shadow-md"
                 />
             </div>
