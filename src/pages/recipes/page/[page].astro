@@ -1,27 +1,29 @@
 ---
 import { getCollection } from 'astro:content';
-import IndexPageLayout from "../../layouts/IndexPageLayout.astro";
-import ProjectCard from '../../components/ProjectCard.astro'
+import IndexPageLayout from "../../../layouts/IndexPageLayout.astro";
+import ProjectCard from '../../../components/ProjectCard.astro'
 
-// Get all recipes
-const allRecipes = await getCollection('recipes');
-
-// Sort by date
-allRecipes.sort((a: any, b: any) => {
+export async function getStaticPaths({ paginate }) {
+  const allRecipes = await getCollection('recipes');
+  
+  // Sort by date
+  allRecipes.sort((a, b) => {
     return new Date(b.data.startDate) - new Date(a.data.startDate);
-});
+  });
+  
+  // Generate pages with 16 items per page (4x4 grid)
+  return paginate(allRecipes, { pageSize: 16 });
+}
 
-// Pagination
-const recipesPerPage = 16; // 4x4 grid
-const currentPage = 1;
-const totalPages = Math.ceil(allRecipes.length / recipesPerPage);
-const recipes = allRecipes.slice(0, recipesPerPage);
+const { page } = Astro.props;
+const totalPages = page.lastPage;
+const currentPage = page.currentPage;
 ---
 
 <IndexPageLayout title="Recipes" description="Browse our delicious recipes" subTitle="Dragon & Bao Recipes">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {
-            recipes.map((entity: any) => (
+            page.data.map((entity: any) => (
                 <ProjectCard
                     class=""
                     key={entity.data.title}
@@ -50,4 +52,3 @@ const recipes = allRecipes.slice(0, recipesPerPage);
         }
     </div>
 </IndexPageLayout>
-

@@ -3,17 +3,19 @@ import ProjectCard from '../../components/ProjectCard.astro'
 import IndexPageLayout from "../../layouts/IndexPageLayout.astro";
 import { getCollection } from "astro:content";
 
-
-import IndexPageLayout from "../../layouts/IndexPageLayout.astro";
-
-
-// read mdx files from projects folder as entities
-const posts = await getCollection('weeklyMenus');
+// read mdx files from weeklyMenus folder as entities
+const allPosts = await getCollection('weeklyMenus');
 
 // sort projects by dateStart DESC
-posts.sort((a: any, b: any) => {
+allPosts.sort((a: any, b: any) => {
     return new Date(b.data.startDate) - new Date(a.data.startDate);
-    });
+});
+
+// Pagination
+const postsPerPage = 16; // 4x4 grid
+const currentPage = 1;
+const totalPages = Math.ceil(allPosts.length / postsPerPage);
+const posts = allPosts.slice(0, postsPerPage);
 ---
 <!-- -&#45;&#45;-->
 <!--import "../../styles/global.css"; // Import global styles-->
@@ -70,25 +72,37 @@ posts.sort((a: any, b: any) => {
 <!--    ))}-->
 <!--</div>-->
 
-<IndexPageLayout title="Blog" description="What is top of mind for me today"
-                 subTitle="TCHeiner Blog">
+<IndexPageLayout title="Weekly Menus" description="Browse our weekly menu offerings"
+                 subTitle="Dragon & Bao Weekly Menus">
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {
             posts.map((entity: any) => (
-                    <ProjectCard
-                            class=""
-                            key={entity.data.title}
-                            href={'/weeklyMenus/' + entity.slug}
-                            heading={entity.data.title}
-                            subheading={entity.data.description}
-                            altText={entity.data?.image?.alt}
-                            imagePath={entity.data?.image?.url}
-                            dateStart={entity.data.startDate}
-                    />
+                <ProjectCard
+                    class=""
+                    key={entity.data.title}
+                    href={'/weeklyMenus/' + entity.slug}
+                    heading={entity.data.title}
+                    subheading={entity.data.description}
+                    altText={entity.data?.image?.alt}
+                    imagePath={entity.data?.image?.url}
+                    dateStart={entity.data.startDate}
+                />
             ))
         }
     </div>
 
-
+    {/* Pagination */}
+    <div class="flex justify-center mt-8 space-x-2">
+        {
+            Array.from({ length: totalPages }).map((_, i) => (
+                <a 
+                    href={i === 0 ? '/weeklyMenus' : `/weeklyMenus/page/${i + 1}`}
+                    class={`px-4 py-2 rounded-md ${currentPage === i + 1 ? 'bg-aquamarine-blue-400 text-white' : 'bg-gray-200 text-gray-700'}`}
+                >
+                    {i + 1}
+                </a>
+            ))
+        }
+    </div>
 </IndexPageLayout>
