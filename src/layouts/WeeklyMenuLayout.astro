@@ -20,7 +20,17 @@ const {title, description, image, startDate, tags, canonical} = frontmatter;
                 </div>
         }
 
-        <article class="prose mx-auto dark:prose-invert ">
+        {image && (
+            <div class="mx-auto mb-8 max-w-3xl">
+                <img 
+                    src={image.url} 
+                    alt={image.alt || title} 
+                    class="w-full h-auto rounded-lg shadow-md"
+                />
+            </div>
+        )}
+
+        <article class="prose mx-auto dark:prose-invert recipe-card-body">
             <!--required with tailwind typography plugin + prose to render html-->
             <slot/>
         </article>
