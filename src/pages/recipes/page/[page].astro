@@ -24,7 +24,7 @@ const currentPage = page.currentPage;
 ---
 
 <IndexPageLayout title="Recipes" description="Browse our delicious recipes" subTitle="Dragon & Bao Recipes">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto place-items-center">
         {
             page.data.map((entity: any) => (
                 <ProjectCard
