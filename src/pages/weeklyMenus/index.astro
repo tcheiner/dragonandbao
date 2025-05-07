@@ -2,6 +2,9 @@
 import ProjectCard from '../../components/ProjectCard.astro'
 import IndexPageLayout from "../../layouts/IndexPageLayout.astro";
 import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Banner from "../../components/Banner.astro";
+import CustomisedBreadCrumbs from "../../components/CustomisedBreadCrumbs.astro";
 
 // read mdx files from weeklyMenus folder as entities
 const allPosts = await getCollection('weeklyMenus');
@@ -14,98 +17,76 @@ allPosts.sort((a: any, b: any) => {
     return a.data.title.localeCompare(b.data.title);
 });
 
+// Extract all unique tags
+const allTags = Array.from(new Set(allPosts.flatMap((menu) => menu.data.tags || [])));
+
 // Pagination
 const postsPerPage = 16; // 4x4 grid
 const currentPage = 1;
 const totalPages = Math.ceil(allPosts.length / postsPerPage);
 const posts = allPosts.slice(0, postsPerPage);
 ---
-<!-- -&#45;&#45;-->
-<!--import "../../styles/global.css"; // Import global styles-->
-<!--import { getCollection } from "astro:content";-->
-<!--import Banner from "../../components/Banner.astro";-->
 
-<!--// Fetch all MDX files from the weeklyMenus collection-->
-<!--const weeklyMenus = await getCollection("weeklyMenus");-->
+<BaseLayout>
+    <!-- Banner -->
+    <Banner title="Weekly Menus" subtitle="Explore our delicious weekly menu offerings" />
 
-<!--// Sort by descending dates (assuming the slug is in a date format like "YYYY-MM-DD")-->
-<!--weeklyMenus.sort((a, b) => new Date(b.slug) - new Date(a.slug));-->
-
-<!--// Extract all unique tags-->
-<!--const allTags = Array.from(new Set(weeklyMenus.flatMap((menu) => menu.data.tags)));-->
-
-<!--// Debugging (optional)-->
-<!--console.log(weeklyMenus.map((menu) => menu.data));-->
-<!-- -&#45;&#45;-->
-
-<!--&lt;!&ndash; Banner &ndash;&gt;-->
-<!--<Banner title="Weekly Menus" subtitle="Explore delicious menus by date" />-->
-
-<!--&lt;!&ndash; Breadcrumb Trail &ndash;&gt;-->
-<!--<nav class="text-sm text-gray-600 mb-4">-->
-<!--    <a href="/" class="hover:underline">Home</a> &gt; <span>Weekly Menus</span>-->
-<!--</nav>-->
-
-<!--&lt;!&ndash; Tags &ndash;&gt;-->
-<!--<div class="mb-8">-->
-<!--    <h2 class="text-xl font-bold mb-4">Tags</h2>-->
-<!--    <div class="flex flex-wrap gap-2">-->
-<!--        {allTags.map((tag) => (-->
-<!--                <span class="bg-gray-200 text-gray-700 py-1 px-3 rounded-full text-sm">{tag}</span>-->
-<!--        ))}-->
-<!--    </div>-->
-<!--</div>-->
-
-<!--&lt;!&ndash; 3x3 Grid of Images &ndash;&gt;-->
-<!--<div class="grid grid-cols-3 gap-4">-->
-<!--    {weeklyMenus.map((menu) => (-->
-<!--            <a href={`/weekly-menus/${menu.slug}`} class="block">-->
-<!--                {menu.data.image?.url ? (-->
-<!--                        <img-->
-<!--                                src={menu.data.image.url}-->
-<!--                                alt={menu.data.image.alt || "Image"}-->
-<!--                                class="rounded-lg shadow-md hover:opacity-90 transition-opacity"-->
-<!--                        />-->
-<!--                ) : (-->
-<!--                        <div class="bg-gray-200 rounded-lg shadow-md flex items-center justify-center h-32">-->
-<!--                            <span class="text-gray-500">No Image</span>-->
-<!--                        </div>-->
-<!--                )}-->
-<!--            </a>-->
-<!--    ))}-->
-<!--</div>-->
-
-<IndexPageLayout title="Weekly Menus" description="Browse our weekly menu offerings"
-                 subTitle="Dragon & Bao Weekly Menus">
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {
-            posts.map((entity: any) => (
-                <ProjectCard
-                    class=""
-                    key={entity.data.title}
-                    href={'/weeklyMenus/' + entity.slug}
-                    heading={entity.data.title}
-                    subheading={entity.data.description}
-                    altText={entity.data?.image?.alt}
-                    imagePath={entity.data?.image?.url}
-                    dateStart={entity.data.startDate}
-                />
-            ))
-        }
+    <!-- Breadcrumb Trail -->
+    <div class="container mx-auto px-4 py-4">
+        <CustomisedBreadCrumbs 
+            crumbs={[
+                { text: "Home", href: "/" },
+                { text: "Weekly Menus", href: "/weeklyMenus", active: true }
+            ]}
+        />
     </div>
 
-    {/* Pagination */}
-    <div class="flex justify-center mt-8 space-x-2">
-        {
-            Array.from({ length: totalPages }).map((_, i) => (
-                <a 
-                    href={i === 0 ? '/weeklyMenus' : `/weeklyMenus/page/${i + 1}`}
-                    class={`px-4 py-2 rounded-md ${currentPage === i + 1 ? 'bg-aquamarine-blue-400 text-white' : 'bg-gray-200 text-gray-700'}`}
-                >
-                    {i + 1}
-                </a>
-            ))
-        }
+    <div class="container mx-auto px-4 py-8">
+        <!-- Tags -->
+        {allTags.length > 0 && (
+            <div class="mb-8">
+                <h2 class="text-xl font-bold mb-4">Browse by Tag</h2>
+                <div class="flex flex-wrap gap-2">
+                    {allTags.map((tag) => (
+                        <span class="bg-gray-200 text-gray-700 py-1 px-3 rounded-full text-sm">{tag}</span>
+                    ))}
+                </div>
+            </div>
+        )}
+
+        <!-- Grid of Weekly Menus -->
+        <h2 class="text-2xl font-bold mb-6">All Weekly Menus</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {
+                posts.map((entity: any) => (
+                    <ProjectCard
+                        class=""
+                        key={entity.data.title}
+                        href={'/weeklyMenus/' + entity.slug}
+                        heading={entity.data.title}
+                        subheading={entity.data.description}
+                        altText={entity.data?.image?.alt}
+                        imagePath={entity.data?.image?.url}
+                        dateStart={entity.data.startDate}
+                    />
+                ))
+            }
+        </div>
+
+        <!-- Pagination -->
+        {totalPages > 1 && (
+            <div class="flex justify-center mt-8 space-x-2">
+                {
+                    Array.from({ length: totalPages }).map((_, i) => (
+                        <a 
+                            href={i === 0 ? '/weeklyMenus' : `/weeklyMenus/page/${i + 1}`}
+                            class={`px-4 py-2 rounded-md ${currentPage === i + 1 ? 'bg-aquamarine-blue-400 text-white' : 'bg-gray-200 text-gray-700'}`}
+                        >
+                            {i + 1}
+                        </a>
+                    ))
+                }
+            </div>
+        )}
     </div>
-</IndexPageLayout>
+</BaseLayout>
