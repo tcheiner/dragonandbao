@@ -9,9 +9,9 @@ export interface Props {
 
 const { image, alt_desc, name, desc, cost } = Astro.props;
 ---
-<figure class="w-[500px] h-[500px] rounded-3xl shadow-2xl overflow-hidden">
+<figure class="w-full max-w-[500px] h-auto rounded-3xl shadow-2xl overflow-hidden">
     <img
-            class="w-full rounded-3xl shadow-2xl"
+            class="w-full h-auto object-cover rounded-3xl shadow-2xl"
             src={image}
             alt={alt_desc}
             width="300"
