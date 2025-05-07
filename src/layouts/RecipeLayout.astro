@@ -1,111 +1,82 @@
 ---
-import ContentTags from "../components/ContentTags.astro";
+import BaseLayout from "./BaseLayout.astro";
+import Container from "../components/Container.astro";
 import { siteConfig } from "../content/siteConfig.js";
 
 const { frontmatter} = Astro.props;
 const { slug, title, creditUrl, image, idealImage, realisticImage, prepTime, cookTime, servings, calories, tags, content } = Astro.props;
 ---
 
-<article class="recipe">
-    <header>
-        <h1>{title}</h1>
-        <p class="credits">Recipe by: <a href={creditUrl} target="_blank" rel="noopener noreferrer">Source</a></p>
-    </header>
-
-    <section class="recipe-meta">
-        <p><strong>Prep Time:</strong> {prepTime} minutes</p>
-        <p><strong>Cook Time:</strong> {cookTime} minutes</p>
-        <p><strong>Servings:</strong> {servings}</p>
-        <p><strong>Calories:</strong> {calories}</p>
-        <p><strong>Tags:</strong> {tags?.join(', ')}</p>
-    </section>
-
-    <section class="recipe-images">
-        {idealImage && (
-            <div>
-                <h3>Ideal Image</h3>
-                <img src={idealImage} alt={`Ideal version of ${title}`} />
+<BaseLayout title={title}>
+    <Container>
+        <div class="max-w-4xl mx-auto">
+            <div class="mb-8">
+                <a href="/recipes" class="text-aquamarine-blue-500 hover:underline flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    Back to Recipes
+                </a>
             </div>
-        )}
-        {realisticImage && (
-            <div>
-                <h3>Realistic Image</h3>
-                <img src={realisticImage} alt={`Realistic version of ${title}`} />
-            </div>
-        )}
-    </section>
+            
+            <article class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="p-6">
+                    <header class="mb-6 text-center">
+                        <h1 class="text-3xl font-bold mb-2">{title}</h1>
+                        {creditUrl && (
+                            <p class="text-gray-600">
+                                Recipe from: <a href={creditUrl} target="_blank" rel="noopener noreferrer" class="text-aquamarine-blue-500 hover:underline">Source</a>
+                            </p>
+                        )}
+                    </header>
 
-    <section class="recipe-content">
-        <slot />
-    </section>
-</article>
+                    <div class="flex flex-wrap gap-4 mb-6 justify-center">
+                        <div class="bg-gray-50 px-4 py-2 rounded-md">
+                            <span class="block text-sm text-gray-500">Prep Time</span>
+                            <span class="font-medium">{prepTime} min</span>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-2 rounded-md">
+                            <span class="block text-sm text-gray-500">Cook Time</span>
+                            <span class="font-medium">{cookTime} min</span>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-2 rounded-md">
+                            <span class="block text-sm text-gray-500">Servings</span>
+                            <span class="font-medium">{servings}</span>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-2 rounded-md">
+                            <span class="block text-sm text-gray-500">Calories</span>
+                            <span class="font-medium">{calories}</span>
+                        </div>
+                    </div>
 
-<style>
-    .recipe {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 1rem;
-    }
+                    {tags && tags.length > 0 && (
+                        <div class="flex flex-wrap gap-2 mb-6 justify-center">
+                            {tags.map((tag) => (
+                                <span class="bg-aquamarine-blue-100 text-aquamarine-blue-800 text-xs px-2 py-1 rounded">{tag}</span>
+                            ))}
+                        </div>
+                    )}
 
-    .recipe header {
-        text-align: center;
-        margin-bottom: 2rem;
-    }
+                    <div class="flex flex-col md:flex-row gap-6 mb-8">
+                        {idealImage && (
+                            <div class="flex-1">
+                                <img src={idealImage} alt={`${title}`} class="w-full h-auto rounded-lg shadow-sm" />
+                            </div>
+                        )}
+                        {realisticImage && idealImage !== realisticImage && (
+                            <div class="flex-1">
+                                <img src={realisticImage} alt={`${title}`} class="w-full h-auto rounded-lg shadow-sm" />
+                            </div>
+                        )}
+                    </div>
 
-    .recipe-meta {
-        margin-bottom: 2rem;
-        background: #f9f9f9;
-        padding: 1rem;
-        border-radius: 8px;
-    }
+                    <div class="prose prose-lg max-w-none">
+                        <slot />
+                    </div>
+                </div>
+            </article>
+        </div>
+    </Container>
+</BaseLayout>
 
-    .recipe-images {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
-        margin-bottom: 2rem;
-    }
-
-    @media (min-width: 768px) {
-        .recipe-images {
-            flex-direction: row;
-        }
-    }
-
-    .recipe-images div {
-        flex: 1;
-        text-align: center;
-        width: 100%;
-        max-width: 400px;
-    }
-
-    .recipe-images img {
-        max-width: 100%;
-        border-radius: 8px;
-        margin: 0 auto;
-    }
-
-    .recipe-content {
-        margin-bottom: 2rem;
-    }
-
-    .recipe-content h2 {
-        color: #0288d1;
-        border-bottom: 2px solid #e0e0e0;
-        padding-bottom: 0.5rem;
-        margin-top: 2rem;
-    }
-
-    .recipe-content ul, .recipe-content ol {
-        padding-left: 1.5rem;
-    }
-
-    .recipe-content li {
-        margin-bottom: 0.5rem;
-    }
-</style>
-
-<!-- Remove duplicate style section -->
+<!-- Styles are now handled by Tailwind classes -->

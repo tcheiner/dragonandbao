@@ -1,57 +1,48 @@
 ---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Container from "../../components/Container.astro";
 import { getCollection } from 'astro:content';
-import IndexPageLayout from "../../layouts/IndexPageLayout.astro";
-import ProjectCard from '../../components/ProjectCard.astro'
 
 // Get all recipes
 const allRecipes = await getCollection('recipes');
 console.log("Found recipes:", allRecipes.length, allRecipes.map(r => r.slug));
-
-// Sort by date if available, otherwise by title
-allRecipes.sort((a: any, b: any) => {
-    if (a.data.startDate && b.data.startDate) {
-        return new Date(b.data.startDate) - new Date(a.data.startDate);
-    }
-    return a.data.title.localeCompare(b.data.title);
-});
-
-// Pagination
-const recipesPerPage = 16; // 4x4 grid
-const currentPage = 1;
-const totalPages = Math.ceil(allRecipes.length / recipesPerPage);
-const recipes = allRecipes.slice(0, recipesPerPage);
 ---
 
-<IndexPageLayout title="Recipes" description="Browse our delicious recipes" subTitle="Dragon & Bao Recipes">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {
-            recipes.map((entity: any) => (
-                <ProjectCard
-                    class=""
-                    key={entity.data.title}
-                    href={'/recipes/' + entity.slug}
-                    heading={entity.data.title}
-                    subheading={entity.data.description || entity.data.title}
-                    altText={entity.data?.image?.alt || `Image of ${entity.data.title}`}
-                    imagePath={entity.data?.image?.url || entity.data.idealImage || "/images/dragonnbao-light-logo.png"}
-                    dateStart={entity.data.startDate}
-                />
-            ))
-        }
-    </div>
-
-    <!-- Pagination -->
-    <div class="flex justify-center mt-8 space-x-2">
-        {
-            Array.from({ length: totalPages }).map((_, i) => (
-                <a 
-                    href={i === 0 ? '/recipes' : `/recipes/page/${i + 1}`}
-                    class={`px-4 py-2 rounded-md ${currentPage === i + 1 ? 'bg-aquamarine-blue-400 text-white' : 'bg-gray-200 text-gray-700'}`}
-                >
-                    {i + 1}
+<BaseLayout title="Recipes">
+    <Container>
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold mb-2">Dragon & Bao Recipes</h1>
+            <p class="text-lg text-gray-600">Browse our delicious recipes</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {allRecipes.map((recipe) => (
+                <a href={`/recipes/${recipe.slug}`} class="group">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 group-hover:shadow-lg group-hover:-translate-y-1">
+                        <div class="h-48 overflow-hidden">
+                            <img 
+                                src={recipe.data.image?.url || recipe.data.idealImage || "/images/dragonnbao-light-logo.png"} 
+                                alt={recipe.data.image?.alt || recipe.data.title}
+                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                            />
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold mb-2 group-hover:text-aquamarine-blue-500">{recipe.data.title}</h3>
+                            <p class="text-gray-600 text-sm mb-3">{recipe.data.description || ""}</p>
+                            <div class="flex flex-wrap gap-2">
+                                {recipe.data.tags && recipe.data.tags.slice(0, 3).map((tag) => (
+                                    <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">{tag}</span>
+                                ))}
+                            </div>
+                            <div class="mt-4 flex justify-between items-center text-sm text-gray-500">
+                                <span>Prep: {recipe.data.prepTime || "-"} min</span>
+                                <span>Cook: {recipe.data.cookTime || "-"} min</span>
+                            </div>
+                        </div>
+                    </div>
                 </a>
-            ))
-        }
-    </div>
-</IndexPageLayout>
+            ))}
+        </div>
+    </Container>
+</BaseLayout>
 
