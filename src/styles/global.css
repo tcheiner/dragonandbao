@@ -202,7 +202,8 @@ html, body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: var(--color-primary);
+  color: var(--color-foreground);
+  font-weight: 700;
 }
 
 a {
@@ -247,7 +248,7 @@ button:hover {
   display: flex;
   gap: 1.5rem; /* Space between links */
 }
-
+                                                     >
 .nav-links-left a,
 .nav-links-right a {
   text-decoration: none;
@@ -259,7 +260,8 @@ button:hover {
 
 .nav-links-left a:hover,
 .nav-links-right a:hover {
-  color: var(--color-primary);
+  color: var(--color-foreground);
+
 }
 
 /* Hamburger Menu */
@@ -274,7 +276,7 @@ button:hover {
   width: 40px;
   height: 5px;
   margin-bottom: 10px;
-  background-color: var(--color-primary);
+  background-color: var(--color-foreground);
 }
 
 .hamburger-button {
@@ -282,6 +284,18 @@ button:hover {
   background: none;
   border: none;
   cursor: pointer;
+}
+
+.announcement-bar {
+  width: 100%;
+  background-color: var(--color-primary);
+  color: var(--color-foreground);
+  text-align: center;
+  padding: 1rem 1rem; /* Increased padding for better spacing */
+  font-weight: bold; /* Bold text */
+  font-size: 1.25rem; /* Slightly larger text size */
+  line-height: 1.5rem; /* Adjust line height for better readability */
+  height: auto; /* Allows the height to adjust dynamically */
 }
 
 /* Responsive Styles */

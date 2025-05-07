@@ -1,20 +1,18 @@
 ---
 import WeeklyMenuLayout from "../../layouts/WeeklyMenuLayout.astro";
-import { getEntryBySlug } from "astro:content";
+import {getCollection, getEntryBySlug} from "astro:content";
 
-// Get the dynamic slug from the URL
-const { slug } = Astro.params;
-
-// Fetch the MDX content by slug
-const menu = await getEntryBySlug("weeklyMenus", slug);
-
-if (!menu) {
-    throw new Error(`Menu not found for slug: ${slug}`);
+export async function getStaticPaths() {
+    const postEntries = await getCollection('weeklyMenus');
+    return postEntries.map((entry) => ({
+        params: {slug: entry.slug},
+        props: {entry},
+    }));
 }
 
-const { frontmatter, Content } = menu;
+const {entry} = Astro.props;
+const {Content} = await entry.render();
 ---
-
-<WeeklyMenuLayout frontmatter={frontmatter}>
+<WeeklyMenuLayout frontmatter={entry.data}>
     <Content />
 </WeeklyMenuLayout>

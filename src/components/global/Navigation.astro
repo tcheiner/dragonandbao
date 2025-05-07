@@ -4,14 +4,14 @@ import { siteConfig } from "../../config/siteConfig.js";
 <div class="nav-container">
     <div class="nav-links-left">
         {siteConfig.siteData.leftHeaderNavLinks.map((link) => (
-                <a href={link.href} class="h-8 delay-150 text-sm transition-colors">
+                <a href={link.href}>
                     {link.name}
                 </a>
         ))}
     </div>
     <div class="nav-links-right">
         {siteConfig.siteData.rightHeaderNavLinks.map((link) => (
-                <a href={link.href} class="h-8 delay-150 text-sm transition-colors">
+                <a href={link.href}>
                     {link.name}
                 </a>
         ))}

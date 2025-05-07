@@ -9,9 +9,9 @@ import { siteConfig } from "../../config/siteConfig.js";
         <div class="flex items-center lg-text-center">
           <div class="lg:text-center lg:mx-auto">
             <div class="flex items-center text-wild-sand-50">
-              <div class="lg:text-center items-center lg:mx-auto">
+              <div class="lg:text-center items-center border-b w-full lg:mx-auto">
                 <img src="/images/cooking/line-logo-white.png" alt="dragon&bao" class="mx-auto mb-5 w-1/2 md:w-1/2 lg:w-1/2" />
-                <p class="text-sm text-center mt-1">
+                <p class="text-sm text-center mb-5 mt-1">
                   {siteConfig.siteData.designedByText}<br />by
                   <a href={siteConfig.siteData.developerWebsite} class="underline duration-200">
                     {siteConfig.siteData.developerName}.
@@ -21,7 +21,7 @@ import { siteConfig } from "../../config/siteConfig.js";
             </div>
           </div>
         </div>
-          <nav class="flex justify-center gap-8 mt-11">
+          <nav class="flex justify-center gap-8 border-b w-full mb-11 mt-11">
             {siteConfig.siteData.socialLinks.map((link) => (
                 <a href={link.href} class="h-8 delay-150 text-sm transition-colors">
                   {link.name}
@@ -30,10 +30,10 @@ import { siteConfig } from "../../config/siteConfig.js";
           </nav>
       </div>
     </div>
-    <div class="flex flex-col border-t w-full items-center text-center lg:mx-auto lg:text-center md:pt-6 pb-12 pt-8">
-      <p class="md:mt-0 mt-6 text-sm">
-        {siteConfig.siteData.inspirationCredit}
-      </p>
-    </div>
+    <!--<div class="flex flex-col border-t w-full items-center text-center lg:mx-auto lg:text-center md:pt-6 pb-12 pt-8">-->
+    <!--  <p class="md:mt-0 mt-6 text-sm">-->
+    <!--    {siteConfig.siteData.inspirationCredit}-->
+    <!--  </p>-->
+    <!--</div>-->
   </div>
 </footer>

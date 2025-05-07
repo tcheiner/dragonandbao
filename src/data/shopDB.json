@@ -1,51 +1,58 @@
 [
   {
-    "image": "/images/riceball-2.png",
-    "alt_desc": "Riceball Cooking Class",
-    "name": "Various types of riceballs - large(adults or teens) or small(toddlers).",
-    "desc": "Vegan or various flavored meat fillings of asian flavors.  2 hr class in Buitenveldert. Minimum 4 participants.",
+    "image": "/images/cooking/riceball-2.png",
+    "alt_desc": "The Dragon’s Kitchen: Master the Art of Rice Balls!",
+    "name": "The Dragon’s Kitchen: Master the Art of Rice Balls!",
+    "desc": "Ingredients provided. Amsterdam Zuid. 4 minimum.",
     "cost": "€120.00"
   },
   {
-    "image": "/images/ramen-class.png",
+    "image": "/images/cooking/ramen-class.png",
     "alt_desc": "Ramen Cooking Class",
-    "name": "Chicken or Pork Ramen Cooking class",
-    "desc": "3 hr class in Buitenveldert. Minimum 4 participants.",
+    "name": "The Dragon’s Slurp & Sizzle Workshop - Ramen Class.",
+    "desc": "Ingredients provided. Amsterdam Zuid. 4 minimum.",
     "cost": "€180.00"
   },
   {
-    "image": "/images/kimchi-class.png",
+    "image": "/images/cooking/kimchi-class.png",
     "alt_desc": "Kimchi Class",
-    "name": "Kimchi Making class",
-    "desc": "3 hr class in Buitenveldert.  Minimum 8 participants.",
+    "name": "The Dragonfire Kitchen: Kimchi Mastery",
+    "desc": "Ingredients provided. Amsterdam Zuid. 6 minimum.",
     "cost": "€180.00"
   },
   {
-    "image": "/images/riceball-3.png",
+    "image": "/images/cooking/riceball-3.png",
     "alt_desc": "Riceball",
-    "name": "Single Riceball (Large) Lunch",
+    "name": "The Dragon’s Bite Bento - One Adult Riceball Lunch",
     "desc": "One cup of cooked japanese short-grained rice, deep-fried chicken or pork katsu, cucumbers, pickled daikon, with fruit companions",
     "cost": "€15.00"
   },
   {
-    "image": "/images/riceball-bowl-1.png",
+    "image": "/images/cooking/riceball-bowl-1.png",
     "alt_desc": "Toddler riceball lunches",
-    "name": "Single toddler riceball lunch",
+    "name": "Hatchling’s Munchbox - Toddler Riceball Lunch",
     "desc": "Smaller riceballs for toddlers, with fruit and veggie companions",
     "cost": "€5.00"
   },
   {
-    "image": "/images/extraRiceTee-Women.png",
+    "image": "/images/shop/extraRiceTee-Women.png",
     "alt_desc": "Riceball Tee",
-    "name": "Riceball Tee",
-    "desc": "Do you love rice and much as we do?!? Celebrate with a tee!",
+    "name": "Wear Your Inner Adventurer! Riceball Tee",
+    "desc": "Perfect for quests to the kitchen, casual outings, or cozying up at home.",
     "cost": "€30.00"
   },
   {
-    "image": "/images/extraRiceTote.png",
-    "alt_desc": "Riceball Tote",
-    "name": "Riceball Tote",
-    "desc": "Do you love rice and much as we do?!? Shout it out loud with a tote!",
+    "image": "/images/shop/extraRiceTote.png",
+    "alt_desc": "Carry the Magic of Dragon & Bao Riceball Tote",
+    "name": "Carry the Magic of Dragon & Bao Riceball Tote!",
+    "desc": "Perfect for carrying your treasures—whether it’s snacks, books, or a fresh haul from your latest quest.",
     "cost": "€30.00"
+  },
+  {
+    "image": "/images/shop/db-apron.png",
+    "alt_desc": "The Dragon’s Chef Armor - Riceball Apron",
+    "name": "Carry the Magic of Dragon & Bao Riceball Tote!",
+    "desc": "Suit up for your culinary quests with The Dragon’s Chef Armor—the ultimate apron for fearless foodies and kitchen adventurers! Whether you’re taming the fiery art of kimchi, crafting the perfect riceball, or just whipping up your next masterpiece, this apron has you covered (literally)",
+    "cost": "€40.00"
   }
 ]

@@ -19,12 +19,12 @@ export const siteConfig = {
         developerGithub: "https://github.com/tcheiner/dragonnbao",
         inspirationCredit: "Inspiration Credit: Lexington Themes",
         leftHeaderNavLinks: [
-            { name: "Home", href: "/#" },
-            { name: "Weekly Menus", href: "/#" }
+            { name: "Home", href: "/" },
+            { name: "Weekly Menus", href: "/weeklyMenus" }
         ],
         rightHeaderNavLinks: [
-            { name: "Login", href: "/#" },
-            { name: "Register", href: "/#" }
+            { name: "Login", href: "/login" },
+            { name: "Register", href: "/register" }
         ],
         socialLinks: [
             { name: "Trustpilot", href: "https://whatsapp.com/dragonnbao" },

@@ -1,10 +1,21 @@
 ---
-import shop from '../data/shopDB.json'; // Import the JSON file
-import ShopItem from './ShopItem.astro'; // Import the shopItem component
+import "../styles/global.css";
+import shop from '../data/shopDB.json';
+import ShopItem from './ShopItem.astro';
+import  {siteConfig} from '../config/siteConfig.js';
 ---
-<main class="relative overflow-hidden">
-    <div class="relative mx-auto px-8 max-w-7xl py-12   md:px-12">
-        <div class="grid grid-cols-1 gap-6 lg:gap-y-32 md:grid-cols-2 ">
+<main  class="relative overflow-hidden">
+    <div class="relative mx-auto px-8 max-w-7xl py-12  md:px-12">
+        <div class="mx-auto text-center ">
+            <img src={siteConfig.siteData.largeBannerSrc} alt="dragon&bao" class="mx-auto mb-10 w-1/2 md:w-1/2 lg:w-1/3" />
+            <p class="lg:text-2xl text-1xl font-semibold tracking-tight first:mt-0 text-start mb-15">
+                Warmest.. Hottest Greetings!<br/>
+                We’ve got rice balls stuffed with all kinds of goodies—sweet, savory, spicy, you name it!<br/>
+                Here, you’ll find rice balls so fluffy they could float away!<br/>
+                And if you’re heading out on an adventure, our travel rations are guaranteed to keep your belly
+                full and happy! What sounds good today?<br/>
+                </p>
+            <div class="grid grid-cols-1 gap-6 lg:gap-y-32 md:grid-cols-2 ">
                 {shop.map((item) => (
                         <ShopItem
                                 image={item.image}
