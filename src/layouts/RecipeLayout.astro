@@ -9,8 +9,8 @@ const { slug, title, creditUrl, image, idealImage, realisticImage, prepTime, coo
 
 <BaseLayout title={title}>
     <Container>
-        <div class="max-w-4xl mx-auto">
-            <div class="mb-8">
+        <div class="max-w-4xl mx-auto my-8">
+            <div class="mb-6">
                 <a href="/recipes" class="text-aquamarine-blue-500 hover:underline flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -19,9 +19,9 @@ const { slug, title, creditUrl, image, idealImage, realisticImage, prepTime, coo
                 </a>
             </div>
             
-            <article class="bg-white rounded-lg shadow-md overflow-hidden">
-                <div class="p-6">
-                    <header class="mb-6 text-center">
+            <article class="recipe-card">
+                <div class="recipe-card-content">
+                    <header class="recipe-card-header">
                         <h1 class="text-3xl font-bold mb-2">{title}</h1>
                         {creditUrl && (
                             <p class="text-gray-600">
@@ -30,47 +30,47 @@ const { slug, title, creditUrl, image, idealImage, realisticImage, prepTime, coo
                         )}
                     </header>
 
-                    <div class="flex flex-wrap gap-4 mb-6 justify-center">
-                        <div class="bg-gray-50 px-4 py-2 rounded-md">
+                    <div class="recipe-card-meta">
+                        <div class="recipe-card-meta-item">
                             <span class="block text-sm text-gray-500">Prep Time</span>
                             <span class="font-medium">{prepTime} min</span>
                         </div>
-                        <div class="bg-gray-50 px-4 py-2 rounded-md">
+                        <div class="recipe-card-meta-item">
                             <span class="block text-sm text-gray-500">Cook Time</span>
                             <span class="font-medium">{cookTime} min</span>
                         </div>
-                        <div class="bg-gray-50 px-4 py-2 rounded-md">
+                        <div class="recipe-card-meta-item">
                             <span class="block text-sm text-gray-500">Servings</span>
                             <span class="font-medium">{servings}</span>
                         </div>
-                        <div class="bg-gray-50 px-4 py-2 rounded-md">
+                        <div class="recipe-card-meta-item">
                             <span class="block text-sm text-gray-500">Calories</span>
                             <span class="font-medium">{calories}</span>
                         </div>
                     </div>
 
                     {tags && tags.length > 0 && (
-                        <div class="flex flex-wrap gap-2 mb-6 justify-center">
+                        <div class="recipe-card-tags">
                             {tags.map((tag) => (
-                                <span class="bg-aquamarine-blue-100 text-aquamarine-blue-800 text-xs px-2 py-1 rounded">{tag}</span>
+                                <span class="recipe-card-tag">{tag}</span>
                             ))}
                         </div>
                     )}
 
-                    <div class="flex flex-col md:flex-row gap-6 mb-8">
+                    <div class="recipe-card-images">
                         {idealImage && (
-                            <div class="flex-1">
-                                <img src={idealImage} alt={`${title}`} class="w-full h-auto rounded-lg shadow-sm" />
+                            <div class="recipe-card-image">
+                                <img src={idealImage} alt={`${title}`} />
                             </div>
                         )}
                         {realisticImage && idealImage !== realisticImage && (
-                            <div class="flex-1">
-                                <img src={realisticImage} alt={`${title}`} class="w-full h-auto rounded-lg shadow-sm" />
+                            <div class="recipe-card-image">
+                                <img src={realisticImage} alt={`${title}`} />
                             </div>
                         )}
                     </div>
 
-                    <div class="prose prose-lg max-w-none">
+                    <div class="recipe-card-body prose prose-lg max-w-none">
                         <slot />
                     </div>
                 </div>
