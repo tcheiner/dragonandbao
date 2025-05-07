@@ -12,6 +12,9 @@ export async function getStaticPaths() {
 
 const {entry} = Astro.props;
 const {Content} = await entry.render();
+
+// Debug the entry data to see what's available
+console.log("Weekly Menu Entry:", entry.slug, entry.data);
 ---
 <WeeklyMenuLayout frontmatter={entry.data}>
     <Content />
