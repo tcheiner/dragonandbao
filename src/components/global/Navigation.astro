@@ -1,19 +1,120 @@
 ---
 import { siteConfig } from "../../content/siteConfig.js";
 ---
-<div class="nav-container">
-    <div class="nav-links-left">
-        {siteConfig.siteData.leftHeaderNavLinks.map((link) => (
+<nav class="nav-container">
+    <!-- Hamburger menu button (only visible on mobile) -->
+    <button class="hamburger-menu" aria-label="Toggle menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+    </button>
+    
+    <!-- Navigation links (hidden on mobile until toggled) -->
+    <div class="nav-links">
+        <div class="nav-links-left">
+            {siteConfig.siteData.leftHeaderNavLinks.map((link) => (
                 <a href={link.href}>
                     {link.name}
                 </a>
-        ))}
-    </div>
-    <div class="nav-links-right">
-        {siteConfig.siteData.rightHeaderNavLinks.map((link) => (
+            ))}
+        </div>
+        <div class="nav-links-right">
+            {siteConfig.siteData.rightHeaderNavLinks.map((link) => (
                 <a href={link.href}>
                     {link.name}
                 </a>
-        ))}
+            ))}
+        </div>
     </div>
-</div>
+</nav>
+
+<style>
+    .nav-container {
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+    
+    .nav-links {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    .hamburger-menu {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 10;
+    }
+    
+    .hamburger-line {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: currentColor;
+        border-radius: 10px;
+    }
+    
+    /* Mobile styles */
+    @media (max-width: 768px) {
+        .hamburger-menu {
+            display: flex;
+        }
+        
+        .nav-links {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            flex-direction: column;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            display: none;
+            z-index: 5;
+        }
+        
+        .nav-links.active {
+            display: flex;
+        }
+        
+        .nav-links-left, 
+        .nav-links-right {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+        }
+        
+        .nav-links-left {
+            margin-bottom: 1rem;
+        }
+    }
+</style>
+
+<script>
+    // Add event listener to toggle menu
+    document.addEventListener('DOMContentLoaded', () => {
+        const hamburgerButton = document.querySelector('.hamburger-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburgerButton?.addEventListener('click', () => {
+            navLinks?.classList.toggle('active');
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (event) => {
+            const target = event.target as HTMLElement;
+            if (!target.closest('.nav-container')) {
+                navLinks?.classList.remove('active');
+            }
+        });
+    });
+</script>
