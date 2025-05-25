@@ -9,6 +9,11 @@ import { getCollection } from 'astro:content';
 const allRecipes = await getCollection('recipes');
 console.log("Found recipes:", allRecipes.length, allRecipes.map(r => r.slug));
 
+// Extract all tags from recipes
+const allTags = allRecipes.flatMap(recipe => recipe.data.tags || []);
+// Create a list of unique tags
+const uniqueTags = [...new Set(allTags)].sort();
+
 const breadcrumbTrail = [
     { label: "Home", url: "/" },
     { label: "Recipes", url: null }, // Current page has no link
@@ -21,6 +26,23 @@ const breadcrumbTrail = [
         <div class="relative mx-auto px-4 sm:px-6 max-w-7xl py-12 md:px-12">
             <!-- Breadcrumb -->
             <Breadcrumb trail={breadcrumbTrail} />
+
+            <!-- Tags Section -->
+            {uniqueTags.length > 0 && (
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold mb-4">Recipe Tags</h2>
+                    <div class="flex flex-wrap gap-2">
+                        {uniqueTags.map(tag => (
+                            <a 
+                                href={`/recipes/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`}
+                                class="px-3 py-1 bg-aquamarine-blue-100 text-aquamarine-blue-800 rounded-full hover:bg-aquamarine-blue-200 transition-colors"
+                            >
+                                {tag}
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            )}
 
             <!-- Recipe Content -->
             <RecipeContent
