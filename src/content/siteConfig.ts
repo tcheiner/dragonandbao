@@ -23,15 +23,16 @@ export const siteConfig = {
         inspirationCredit: "Inspiration Credit: Lexington Themes",
         leftHeaderNavLinks: [
             { name: "Home", href: "/" },
-            { name: "Weekly Menus", href: "/weeklyMenus" }
+            { name: "Weekly Menus", href: "/weeklyMenus" },
+            { name: "Recipes", href: "/recipes" },
+            { name: "Blog", href: "/posts" }
         ],
         rightHeaderNavLinks: [
             { name: "Login", href: "/login" },
-            { name: "Register", href: "/register" }
+            { name: "Register", href: "/register" },
+            { name: "Checkout", href: "/checkout" }
         ],
         socialLinks: [
-            { name: "Trustpilot", href: "https://whatsapp.com/dragonnbao" },
-            { name: "Facebook", href: "https://facebook.com/dragonnbao" },
             { name: "Instagram", href: "https://instagram.com/dragonnbao" },
             { name: "WhatsApp", href: "https://whatsapp.com/dragonnbao" },
             { name: "Email", href: "mailto:tc@dragonnbao.co" }
