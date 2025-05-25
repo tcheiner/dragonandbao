@@ -24,7 +24,7 @@
     "image": "/images/cooking/riceball-3.png",
     "alt_desc": "Riceball",
     "name": "The Dragon’s Bite Bento - One Adult Riceball Lunch",
-    "desc": "One cup of cooked japanese short-grained rice, deep-fried chicken or pork katsu, cucumbers, pickled daikon, with fruit companions",
+    "desc": "One cup of cooked japanese short-grained rice",
     "cost": "€15.00"
   },
   {
@@ -52,7 +52,7 @@
     "image": "/images/shop/db-apron.png",
     "alt_desc": "The Dragon’s Chef Armor - Riceball Apron",
     "name": "Carry the Magic of Dragon & Bao Riceball Tote!",
-    "desc": "Suit up for your culinary quests with The Dragon’s Chef Armor—the ultimate apron for fearless foodies and kitchen adventurers! Whether you’re taming the fiery art of kimchi, crafting the perfect riceball, or just whipping up your next masterpiece, this apron has you covered (literally)",
+    "desc": "Suit up for your culinary quests with The Dragon’s Chef Armor: the ultimate apron!",
     "cost": "€40.00"
   }
 ]

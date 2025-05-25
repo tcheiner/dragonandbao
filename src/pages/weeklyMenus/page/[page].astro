@@ -1,6 +1,6 @@
 ---
-import ProjectCard from '../../../components/ProjectCard.astro'
-import IndexPageLayout from "../../../layouts/IndexPageLayout.astro";
+import ProjectCard from '../../../components/containers/ProjectCard.astro'
+import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths({ paginate }) {
@@ -23,7 +23,7 @@ const totalPages = page.lastPage;
 const currentPage = page.currentPage;
 ---
 
-<IndexPageLayout title="Weekly Menus" description="Browse our weekly menu offerings"
+<BaseLayout title="Weekly Menus" description="Browse our weekly menu offerings"
                  subTitle="Dragon & Bao Weekly Menus">
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -56,4 +56,4 @@ const currentPage = page.currentPage;
             ))
         }
     </div>
-</IndexPageLayout>
+</BaseLayout>

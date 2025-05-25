@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Stripe from '@stripe/stripe-js';
+
+export const prenender = false
+const stripe = new Stripe(import.meta.env.STRIPE_KEY)
+const sessionID = Astro.url.searchParams.get('session_id')
+
+let session
+try {
+    session = await stripe.checkout.sessions.retrieve(sessionID)
+} catch (e) {
+    return Astro.redirect('/checkout')
+}
+
+
+const { name, email } = session.customer_details
+---
+
+<BaseLayout>
+    <div>
+        <h1>Thank you for your purchase, {name}!</h1>
+        <p>We've sent a receipt to {email}.</p>
+    </div>
+</BaseLayout>

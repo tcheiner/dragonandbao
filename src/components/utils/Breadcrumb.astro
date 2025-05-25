@@ -1,0 +1,19 @@
+---
+const { trail } = Astro.props; // Accept a trail prop (array of breadcrumb items)
+---
+<nav aria-label="Breadcrumb" class="py-4">
+    <ol class="flex space-x-2 text-sm text-gray-500">
+        {trail.map((item, index) => (
+                <li class="flex items-center">
+                    {item.url ? (
+                            <a href={item.url} class="text-blue-600 hover:underline">
+                                {item.label}
+                            </a>
+                    ) : (
+                            <span>{item.label}</span> <!-- Current page (no link) -->
+                    )}
+                    {index < trail.length - 1 && <span class="mx-2">/</span>}
+                </li>
+        ))}
+    </ol>
+</nav>

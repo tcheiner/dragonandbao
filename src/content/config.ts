@@ -1,5 +1,23 @@
 import { defineCollection, z } from "astro:content";
 
+const blogPostsCollection = defineCollection({
+    type: "content",
+    schema: z.object({
+        slug: z.string().optional(),
+        title: z.string().optional(),
+        description: z.string().optional(),
+        startDate: z.string().optional(),
+        image: z
+            .object({
+                url: z.string(),
+                alt: z.string(),
+            })
+            .optional(),
+        tags: z.array(z.string()).optional(),
+    }),
+});
+
+
 const weeklyMenusCollection = defineCollection({
     type: "content",
     schema: z.object({
@@ -41,4 +59,5 @@ const recipeCollection = defineCollection({
 export const collections = {
     recipes: recipeCollection,
     weeklyMenus: weeklyMenusCollection,
+    posts: blogPostsCollection
 };
