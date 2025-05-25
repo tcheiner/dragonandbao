@@ -1,53 +1,73 @@
 ---
 import ContentTags from "../components/utils/ContentTags.astro";
 import BaseLayout from "./BaseLayout.astro";
+import Breadcrumb from "../components/utils/Breadcrumb.astro";
 
-const { frontmatter} = Astro.props;
-const {title, description, image, startDate, tags, canonical} = frontmatter;
+const { frontmatter } = Astro.props;
+const { title, description, image, startDate, tags, canonical } = frontmatter;
+
+const breadcrumbTrail = [
+    { label: "Home", url: "/" },
+    { label: "Weekly Menus", url: "/weeklyMenus" },
+    { label: title, url: null }, // Current page has no link
+];
 ---
+
 <BaseLayout title={title} description={description} image={image} subTitle={title} canonicalURL={canonical}>
-    <div class="w-full justify-center flex flex-col">
-        {tags &&
-                <div class="pb-4 mx-auto">
-                    <ContentTags tags={tags}/>
-                </div>}
-
-        {
-            startDate &&
-                <div class="text-sm text-light my-2 sr-only mx-auto">
-                    {startDate}
-                    <!--  screen reader only date-->
-                </div>
-        }
-
-        <div class="mx-auto mb-8 max-w-3xl">
-            {image && image.url && (
-                <img 
-                    src={image.url} 
-                    alt={image.alt || title} 
-                    class="w-full h-auto rounded-lg shadow-md"
-                />
-            )}
-            {(!image || !image.url) && frontmatter.image && typeof frontmatter.image === 'string' && (
-                <img 
-                    src={frontmatter.image} 
-                    alt={title} 
-                    class="w-full h-auto rounded-lg shadow-md"
-                />
-            )}
-            {(!image || !image.url) && frontmatter.image && typeof frontmatter.image === 'object' && frontmatter.image.url && (
-                <img 
-                    src={frontmatter.image.url} 
-                    alt={frontmatter.image.alt || title} 
-                    class="w-full h-auto rounded-lg shadow-md"
-                />
-            )}
+    <div class="max-w-4xl mx-auto my-8 px-4" style="background-image: url('/images/grid-background.jpg'); background-size: cover; padding: 2rem; border-radius: 0.5rem; background-color: rgba(255, 255, 255, 0.5); background-blend-mode: overlay;">
+        <!-- Breadcrumb -->
+        <div class="mb-6">
+            <Breadcrumb trail={breadcrumbTrail} />
         </div>
 
-        <article class="prose mx-auto dark:prose-invert recipe-card-body">
-            <!--required with tailwind typography plugin + prose to render html-->
-            <slot/>
-        </article>
-    </div>
+        <div class="w-full justify-center flex flex-col">
+            <h1 class="text-3xl font-bold mb-4 text-center">{title}</h1>
+            
+            {tags &&
+                <div class="pb-4 mx-auto">
+                    <div class="tags-container">
+                        {tags.map((tag) => (
+                            <a href={`/weeklyMenus/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`} class="tag-button">
+                                {tag}
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            }
 
+            {startDate &&
+                <div class="text-lg text-gray-600 mb-4 text-center">
+                    Week of {new Date(startDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                </div>
+            }
+
+            <div class="mx-auto mb-8 max-w-3xl">
+                {image && image.url && (
+                    <img 
+                        src={image.url} 
+                        alt={image.alt || title} 
+                        class="w-full h-auto rounded-lg shadow-md"
+                    />
+                )}
+                {(!image || !image.url) && frontmatter.image && typeof frontmatter.image === 'string' && (
+                    <img 
+                        src={frontmatter.image} 
+                        alt={title} 
+                        class="w-full h-auto rounded-lg shadow-md"
+                    />
+                )}
+                {(!image || !image.url) && frontmatter.image && typeof frontmatter.image === 'object' && frontmatter.image.url && (
+                    <img 
+                        src={frontmatter.image.url} 
+                        alt={frontmatter.image.alt || title} 
+                        class="w-full h-auto rounded-lg shadow-md"
+                    />
+                )}
+            </div>
+
+            <article class="prose mx-auto dark:prose-invert recipe-card-body">
+                <slot/>
+            </article>
+        </div>
+    </div>
 </BaseLayout>

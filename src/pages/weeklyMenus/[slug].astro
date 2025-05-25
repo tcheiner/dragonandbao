@@ -1,21 +1,19 @@
 ---
-import WeeklyMenuLayout from "../../layouts/WeeklyMenuLayout.astro";
-import {getCollection, getEntryBySlug} from "astro:content";
+import { getCollection } from 'astro:content';
+import WeeklyMenuLayout from '../../layouts/WeeklyMenuLayout.astro';
 
 export async function getStaticPaths() {
-    const postEntries = await getCollection('weeklyMenus');
-    return postEntries.map((entry) => ({
-        params: {slug: entry.slug},
-        props: {entry},
+    const weeklyMenuEntries = await getCollection('weeklyMenus');
+    return weeklyMenuEntries.map(entry => ({
+        params: { slug: entry.slug },
+        props: { entry },
     }));
 }
 
-const {entry} = Astro.props;
-const {Content} = await entry.render();
-
-// Debug the entry data to see what's available
-console.log("Weekly Menu Entry:", entry.slug, entry.data);
+const { entry } = Astro.props;
+const { Content } = await entry.render();
 ---
+
 <WeeklyMenuLayout frontmatter={entry.data}>
     <Content />
 </WeeklyMenuLayout>

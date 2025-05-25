@@ -1,36 +1,33 @@
 ---
 import "../../styles/global.css";
-import WeeklyMenuItem from "../weeklyMenuItem.astro";
+import ProjectCard from "./ProjectCard.astro";
 
-const weeklyMenuFiles = import.meta.glob("../../content/weeklyMenu/*.mdx", { eager: true });
+export interface Props {
+    weeklyMenus: any[];
+    title: string;
+}
 
-const weeklyMenuCollection = Object.values(weeklyMenuFiles).map((file) => {
-    const frontmatter = file.frontmatter || {};
-    return {
-        slug: frontmatter.slug,
-        title: frontmatter.title || "Untitled Menu",
-        image: frontmatter.image || { url: "/images/default.jpg", alt: "Default image" },
-        description: frontmatter.description || "No description available",
-        tags: frontmatter.tags || []
-    };
-});
-
-// Collect all tags into a single array
-const allTags = weeklyMenuCollection.flatMap((weeklyMenu) => weeklyMenu.tags || []);
-
-// Create a list of unique tags
-const uniqueTags = [...new Set(allTags)];
-console.log(weeklyMenuCollection);
+const { weeklyMenus, title } = Astro.props;
 ---
-<main class="relative overflow-hidden">
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-y-32 mx-auto place-items-center">
-        {weeklyMenuCollection.map((item) => (
-                <WeeklyMenuItem
-                        slug={item.slug}
-                        image={item.image?.url}
-                        imageAlt={item?.alt}
-                        title={item.title}
-                />
+
+<div class="mb-8">
+    <h1 class="text-3xl font-bold mb-6">{title}</h1>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {weeklyMenus.map((menu) => (
+            <ProjectCard
+                key={menu.data.title}
+                href={`/weeklyMenus/${menu.slug}`}
+                heading={menu.data.title}
+                subheading={menu.data.description}
+                altText={menu.data.image?.alt}
+                imagePath={menu.data.image?.url}
+                dateStart={menu.data.startDate}
+            />
         ))}
     </div>
-</main>
+    
+    {weeklyMenus.length === 0 && (
+        <p class="text-center text-gray-500 my-12">No weekly menus found.</p>
+    )}
+</div>
