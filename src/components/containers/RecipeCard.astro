@@ -11,6 +11,7 @@ const recipeCollection = Object.values(recipeFiles).map((file) => {
         title: frontmatter.title || "Untitled Recipe",
         image: frontmatter.image || { url: "/images/default.jpg", alt: "Default image" },
         description: frontmatter.description || "No description available",
+        title_desc: frontmatter.title_desc || frontmatter.description || "No description available",
         tags: frontmatter.tags || []
     };
 });
@@ -30,7 +31,7 @@ const uniqueTags = [...new Set(allTags)];
                         image={item.image?.url}
                         imageAlt={item?.alt}
                         title={item.title}
-                        desc={item.description}
+                        desc={item.title_desc}
                         />
                 ))}
     </div>
