@@ -1,0 +1,90 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import RecipeItem from "../../../components/RecipeItem.astro";
+import Container from "../../../components/containers/Container.astro";
+import Breadcrumb from "../../../components/utils/Breadcrumb.astro";
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const allRecipes = await getCollection('recipes');
+  
+  // Extract all tags from recipes
+  const allTags = allRecipes.flatMap(recipe => recipe.data.tags || []);
+  // Create a list of unique tags
+  const uniqueTags = [...new Set(allTags)];
+  
+  // Create a path for each tag
+  return uniqueTags.map(tag => ({
+    params: { tag: tag.toLowerCase().replace(/\s+/g, '-') },
+    props: { 
+      tag,
+      recipes: allRecipes.filter(recipe => 
+        (recipe.data.tags || []).includes(tag)
+      )
+    }
+  }));
+}
+
+const { tag, recipes } = Astro.props;
+
+// Extract all tags from filtered recipes
+const relatedTags = [...new Set(recipes.flatMap(recipe => recipe.data.tags || []))].sort();
+
+const breadcrumbTrail = [
+  { label: "Home", url: "/" },
+  { label: "Recipes", url: "/recipes" },
+  { label: tag, url: null }, // Current page has no link
+];
+---
+
+<BaseLayout title={`${tag} Recipes`}>
+  <main class="relative overflow-hidden">
+    <!-- Centered container -->
+    <div class="relative mx-auto px-4 sm:px-6 max-w-7xl py-12 md:px-12">
+      <!-- Breadcrumb -->
+      <Breadcrumb trail={breadcrumbTrail} />
+      
+      <h1 class="text-3xl font-bold mb-6">{tag} Recipes</h1>
+      
+      <!-- Tags Section -->
+      {relatedTags.length > 0 && (
+        <div class="mb-8">
+          <h2 class="text-2xl font-bold mb-4">Related Tags</h2>
+          <div class="tags-container">
+            {relatedTags.map(relatedTag => (
+              <a 
+                href={`/recipes/tag/${relatedTag.toLowerCase().replace(/\s+/g, '-')}`}
+                class={`tag-button ${relatedTag === tag ? 'active' : ''}`}
+              >
+                {relatedTag}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+      
+      <!-- Recipe Grid -->
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-y-32 mx-auto place-items-center">
+        {recipes.map((recipe) => (
+          <RecipeItem
+            slug={recipe.slug}
+            image={recipe.data.image?.url}
+            imageAlt={recipe.data.image?.alt}
+            title={recipe.data.title}
+            desc={recipe.data.title_desc || recipe.data.description}
+          />
+        ))}
+      </div>
+      
+      {recipes.length === 0 && (
+        <p class="text-center text-gray-500 my-12">No recipes found with this tag.</p>
+      )}
+      
+      <div class="mt-8 text-center">
+        <a href="/recipes" class="inline-block px-6 py-3 bg-aquamarine-blue-500 text-white rounded-md hover:bg-aquamarine-blue-600 transition-colors">
+          View All Recipes
+        </a>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

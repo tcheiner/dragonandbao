@@ -75,9 +75,9 @@ const { slug, title, creditUrl, image, idealImage, realisticImage, prepTime, coo
                     </div>
 
                     {tags && tags.length > 0 && (
-                        <div class="recipe-card-tags">
+                        <div class="recipe-card-tags tags-container">
                             {tags.map((tag) => (
-                                <a href={`/recipes/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`} class="recipe-card-tag hover:bg-aquamarine-blue-200 transition-colors">
+                                <a href={`/recipes/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`} class="tag-button">
                                     {tag}
                                 </a>
                             ))}

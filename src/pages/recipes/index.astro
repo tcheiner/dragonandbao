@@ -31,11 +31,11 @@ const breadcrumbTrail = [
             {uniqueTags.length > 0 && (
                 <div class="mb-8">
                     <h2 class="text-2xl font-bold mb-4">Recipe Tags</h2>
-                    <div class="flex flex-wrap gap-2">
+                    <div class="tags-container">
                         {uniqueTags.map(tag => (
                             <a 
                                 href={`/recipes/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`}
-                                class="px-3 py-1 bg-aquamarine-blue-100 text-aquamarine-blue-800 rounded-full hover:bg-aquamarine-blue-200 transition-colors"
+                                class="tag-button"
                             >
                                 {tag}
                             </a>
