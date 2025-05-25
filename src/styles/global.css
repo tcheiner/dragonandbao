@@ -371,6 +371,21 @@ button:hover {
   box-shadow: 0 0 0 2px white, 0 0 0 4px var(--color-sunshade-500);
 }
 
+/* Blog specific styles */
+.blog-tag-button {
+  background-color: var(--color-negroni-500) !important;
+  color: var(--color-charcoal-900) !important;
+}
+
+.blog-tag-button:hover {
+  background-color: var(--color-negroni-600) !important;
+}
+
+.blog-tag-button.active {
+  background-color: var(--color-negroni-700) !important;
+  box-shadow: 0 0 0 2px white, 0 0 0 4px var(--color-negroni-500) !important;
+}
+
 .tags-container {
   display: flex;
   flex-wrap: wrap;

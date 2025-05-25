@@ -61,8 +61,7 @@ const breadcrumbTrail = [
             {relatedTags.map(relatedTag => (
               <a 
                 href={`/posts/tag/${relatedTag.toLowerCase().replace(/\s+/g, '-')}`}
-                class={`tag-button ${relatedTag === tag ? 'active' : ''}`}
-                class="tag-button blog-tag-button"
+                class={`tag-button blog-tag-button ${relatedTag === tag ? 'active' : ''}`}
               >
                 {relatedTag}
               </a>
