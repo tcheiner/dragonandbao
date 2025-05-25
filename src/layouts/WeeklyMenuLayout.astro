@@ -1,11 +1,11 @@
 ---
-import ContentTags from "../components/ContentTags.astro";
-import IndexPageLayout from "./IndexPageLayout.astro";
+import ContentTags from "../components/utils/ContentTags.astro";
+import BaseLayout from "./BaseLayout.astro";
 
 const { frontmatter} = Astro.props;
 const {title, description, image, startDate, tags, canonical} = frontmatter;
 ---
-<IndexPageLayout title={title} description={description} image={image} subTitle={title} canonicalURL={canonical}>
+<BaseLayout title={title} description={description} image={image} subTitle={title} canonicalURL={canonical}>
     <div class="w-full justify-center flex flex-col">
         {tags &&
                 <div class="pb-4 mx-auto">
@@ -50,4 +50,4 @@ const {title, description, image, startDate, tags, canonical} = frontmatter;
         </article>
     </div>
 
-</IndexPageLayout>
+</BaseLayout>

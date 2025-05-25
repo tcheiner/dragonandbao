@@ -1,21 +1,20 @@
 ---
-import ProjectCard from '../../components/ProjectCard.astro'
-import IndexPageLayout from "../../layouts/IndexPageLayout.astro";
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Banner from "../../components/Banner.astro";
-import CustomisedBreadCrumbs from "../../components/CustomisedBreadCrumbs.astro";
+import Banner from "../../components/ui/Banner.astro";
+import Breadcrumb from "../../components/utils/Breadcrumb.astro";
+import WeeklyMenuCard from "../../components/containers/WeeklyMenuCard.astro";
 
 // read mdx files from weeklyMenus folder as entities
 const allPosts = await getCollection('weeklyMenus');
 
 // sort by dateStart DESC if available, otherwise by title
-allPosts.sort((a: any, b: any) => {
-    if (a.data.startDate && b.data.startDate) {
-        return new Date(b.data.startDate) - new Date(a.data.startDate);
-    }
-    return a.data.title.localeCompare(b.data.title);
-});
+// allPosts.sort((a: any, b: any) => {
+//     if (a.data.startDate && b.data.startDate) {
+//         return new Date(b.data.startDate) - new Date(a.data.startDate);
+//     }
+//     return a.data.title.localeCompare(b.data.title);
+// });
 
 // Extract all unique tags
 const allTags = Array.from(new Set(allPosts.flatMap((menu) => menu.data.tags || [])));
@@ -25,68 +24,90 @@ const postsPerPage = 16; // 4x4 grid
 const currentPage = 1;
 const totalPages = Math.ceil(allPosts.length / postsPerPage);
 const posts = allPosts.slice(0, postsPerPage);
+
+const breadcrumbTrail = [
+    { label: "Home", url: "/" },
+    { label: "weeklyMenus", url: null }, // Current page has no link
+];
 ---
 
-<BaseLayout>
-    <!-- Banner -->
-    <Banner title="Weekly Menus" subtitle="Explore our delicious weekly menu offerings" />
+<BaseLayout title="Weekly Menus">
+    <main class="relative overflow-hidden">
+        <!-- Centered container -->
+        <div class="relative mx-auto px-4 sm:px-6 max-w-7xl py-12 md:px-12">
+            <!-- Breadcrumb -->
+            <Breadcrumb trail={breadcrumbTrail} />
 
-    <!-- Breadcrumb Trail -->
-    <div class="container mx-auto px-4 py-4">
-        <CustomisedBreadCrumbs 
-            crumbs={[
-                { text: "Home", href: "/" },
-                { text: "Weekly Menus", href: "/weeklyMenus", active: true }
-            ]}
-        />
-    </div>
-
-    <div class="container mx-auto px-4 py-8">
-        <!-- Tags -->
-        {allTags.length > 0 && (
-            <div class="mb-8">
-                <h2 class="text-xl font-bold mb-4">Browse by Tag</h2>
-                <div class="flex flex-wrap gap-2">
-                    {allTags.map((tag) => (
-                        <span class="bg-gray-200 text-gray-700 py-1 px-3 rounded-full text-sm">{tag}</span>
-                    ))}
-                </div>
-            </div>
-        )}
-
-        <!-- Grid of Weekly Menus -->
-        <h2 class="text-2xl font-bold mb-6">All Weekly Menus</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {
-                posts.map((entity: any) => (
-                    <ProjectCard
-                        class=""
-                        key={entity.data.title}
-                        href={'/weeklyMenus/' + entity.slug}
-                        heading={entity.data.title}
-                        subheading={entity.data.description}
-                        altText={entity.data?.image?.alt}
-                        imagePath={entity.data?.image?.url}
-                        dateStart={entity.data.startDate}
-                    />
-                ))
-            }
+            <!-- Recipe Content -->
+            <WeeklyMenuCard
+                    weeklyMenus={allPosts}
+                    title="Weekly Menus"
+            />
         </div>
-
-        <!-- Pagination -->
-        {totalPages > 1 && (
-            <div class="flex justify-center mt-8 space-x-2">
-                {
-                    Array.from({ length: totalPages }).map((_, i) => (
-                        <a 
-                            href={i === 0 ? '/weeklyMenus' : `/weeklyMenus/page/${i + 1}`}
-                            class={`px-4 py-2 rounded-md ${currentPage === i + 1 ? 'bg-aquamarine-blue-400 text-white' : 'bg-gray-200 text-gray-700'}`}
-                        >
-                            {i + 1}
-                        </a>
-                    ))
-                }
-            </div>
-        )}
-    </div>
+    </main>
 </BaseLayout>
+
+
+<!--<BaseLayout>-->
+<!--    &lt;!&ndash; Banner &ndash;&gt;-->
+<!--    <Banner title="Weekly Menus" subtitle="Explore our delicious weekly menu offerings" />-->
+
+<!--    &lt;!&ndash; Breadcrumb Trail &ndash;&gt;-->
+<!--    <div class="container mx-auto px-4 py-4">-->
+<!--        <CustomisedBreadCrumbs -->
+<!--            crumbs={[-->
+<!--                { text: "Home", href: "/" },-->
+<!--                { text: "Weekly Menus", href: "/weeklyMenus", active: true }-->
+<!--            ]}-->
+<!--        />-->
+<!--    </div>-->
+
+<!--    <div class="container mx-auto px-4 py-8">-->
+<!--        &lt;!&ndash; Tags &ndash;&gt;-->
+<!--        {allTags.length > 0 && (-->
+<!--            <div class="mb-8">-->
+<!--                <h2 class="text-xl font-bold mb-4">Browse by Tag</h2>-->
+<!--                <div class="flex flex-wrap gap-2">-->
+<!--                    {allTags.map((tag) => (-->
+<!--                        <span class="bg-gray-200 text-gray-700 py-1 px-3 rounded-full text-sm">{tag}</span>-->
+<!--                    ))}-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        )}-->
+
+<!--        &lt;!&ndash; Grid of Weekly Menus &ndash;&gt;-->
+<!--        <h2 class="text-2xl font-bold mb-6">All Weekly Menus</h2>-->
+<!--        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">-->
+<!--            {-->
+<!--                posts.map((entity: any) => (-->
+<!--                    <ProjectCard-->
+<!--                        class=""-->
+<!--                        key={entity.data.title}-->
+<!--                        href={'/weeklyMenus/' + entity.slug}-->
+<!--                        heading={entity.data.title}-->
+<!--                        subheading={entity.data.description}-->
+<!--                        altText={entity.data?.image?.alt}-->
+<!--                        imagePath={entity.data?.image?.url}-->
+<!--                        dateStart={entity.data.startDate}-->
+<!--                    />-->
+<!--                ))-->
+<!--            }-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Pagination &ndash;&gt;-->
+<!--        {totalPages > 1 && (-->
+<!--            <div class="flex justify-center mt-8 space-x-2">-->
+<!--                {-->
+<!--                    Array.from({ length: totalPages }).map((_, i) => (-->
+<!--                        <a -->
+<!--                            href={i === 0 ? '/weeklyMenus' : `/weeklyMenus/page/${i + 1}`}-->
+<!--                            class={`px-4 py-2 rounded-md ${currentPage === i + 1 ? 'bg-aquamarine-blue-400 text-white' : 'bg-gray-200 text-gray-700'}`}-->
+<!--                        >-->
+<!--                            {i + 1}-->
+<!--                        </a>-->
+<!--                    ))-->
+<!--                }-->
+<!--            </div>-->
+<!--        )}-->
+<!--    </div>-->
+<!--</BaseLayout>-->

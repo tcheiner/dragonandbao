@@ -1,0 +1,36 @@
+---
+import "../../styles/global.css";
+import WeeklyMenuItem from "../weeklyMenuItem.astro";
+
+const weeklyMenuFiles = import.meta.glob("../../content/weeklyMenu/*.mdx", { eager: true });
+
+const weeklyMenuCollection = Object.values(weeklyMenuFiles).map((file) => {
+    const frontmatter = file.frontmatter || {};
+    return {
+        slug: frontmatter.slug,
+        title: frontmatter.title || "Untitled Menu",
+        image: frontmatter.image || { url: "/images/default.jpg", alt: "Default image" },
+        description: frontmatter.description || "No description available",
+        tags: frontmatter.tags || []
+    };
+});
+
+// Collect all tags into a single array
+const allTags = weeklyMenuCollection.flatMap((weeklyMenu) => weeklyMenu.tags || []);
+
+// Create a list of unique tags
+const uniqueTags = [...new Set(allTags)];
+console.log(weeklyMenuCollection);
+---
+<main class="relative overflow-hidden">
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-y-32 mx-auto place-items-center">
+        {weeklyMenuCollection.map((item) => (
+                <WeeklyMenuItem
+                        slug={item.slug}
+                        image={item.image?.url}
+                        imageAlt={item?.alt}
+                        title={item.title}
+                />
+        ))}
+    </div>
+</main>
