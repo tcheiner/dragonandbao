@@ -62,7 +62,7 @@ const breadcrumbTrail = [
               <a 
                 href={`/posts/tag/${relatedTag.toLowerCase().replace(/\s+/g, '-')}`}
                 class={`tag-button ${relatedTag === tag ? 'active' : ''}`}
-                style="background-color: var(--color-negroni-500); color: var(--color-charcoal-900);"
+                class="tag-button blog-tag-button"
               >
                 {relatedTag}
               </a>
