@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import MDXLayout from "../../layouts/MDXLayout.astro";
-
+import BlogLayout from '../../layouts/BlogLayout.astro';
 
 export async function getStaticPaths() {
     const postEntries = await getCollection('posts');
@@ -15,6 +14,6 @@ const {entry} = Astro.props;
 const {Content} = await entry.render();
 ---
 
-<MDXLayout frontmatter={entry.data}>
+<BlogLayout frontmatter={entry.data}>
     <Content/>
-</MDXLayout>
+</BlogLayout>

@@ -1,0 +1,101 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ProjectCard from "../../../components/containers/ProjectCard.astro";
+import Breadcrumb from "../../../components/utils/Breadcrumb.astro";
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('posts');
+  
+  // Extract all tags from posts
+  const allTags = allPosts.flatMap(post => post.data.tags || []);
+  // Create a list of unique tags
+  const uniqueTags = [...new Set(allTags)];
+  
+  // Create a path for each tag
+  return uniqueTags.map(tag => ({
+    params: { tag: tag.toLowerCase().replace(/\s+/g, '-') },
+    props: { 
+      tag,
+      posts: allPosts.filter(post => 
+        (post.data.tags || []).includes(tag)
+      )
+    }
+  }));
+}
+
+const { tag, posts } = Astro.props;
+
+// Sort posts by date
+posts.sort((a, b) => {
+  if (a.data.publishDate && b.data.publishDate) {
+    return new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime();
+  }
+  return a.data.title.localeCompare(b.data.title);
+});
+
+// Extract all tags from filtered posts
+const relatedTags = [...new Set(posts.flatMap(post => post.data.tags || []))].sort();
+
+const breadcrumbTrail = [
+  { label: "Home", url: "/" },
+  { label: "Blog", url: "/posts" },
+  { label: tag, url: null }, // Current page has no link
+];
+---
+
+<BaseLayout title={`${tag} Blog Posts`}>
+  <main class="relative overflow-hidden">
+    <!-- Centered container -->
+    <div class="relative mx-auto px-4 sm:px-6 max-w-7xl py-12 md:px-12">
+      <!-- Breadcrumb -->
+      <Breadcrumb trail={breadcrumbTrail} />
+      
+      <h1 class="text-3xl font-bold mb-6">{tag} Blog Posts</h1>
+      
+      <!-- Tags Section -->
+      {relatedTags.length > 0 && (
+        <div class="mb-8">
+          <h2 class="text-2xl font-bold mb-4">Related Tags</h2>
+          <div class="tags-container">
+            {relatedTags.map(relatedTag => (
+              <a 
+                href={`/posts/tag/${relatedTag.toLowerCase().replace(/\s+/g, '-')}`}
+                class={`tag-button ${relatedTag === tag ? 'active' : ''}`}
+                style="background-color: var(--color-negroni-500); color: var(--color-charcoal-900);"
+              >
+                {relatedTag}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+      
+      <!-- Blog Grid -->
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 mx-auto">
+        {posts.map((post) => (
+          <ProjectCard
+            key={post.data.title}
+            href={`/posts/${post.slug}`}
+            heading={post.data.title}
+            subheading={post.data.description}
+            altText={post.data.image?.alt}
+            imagePath={post.data.image?.url}
+            dateStart={post.data.publishDate}
+            customStyle="border-t-4 border-sunshade-500"
+          />
+        ))}
+      </div>
+      
+      {posts.length === 0 && (
+        <p class="text-center text-gray-500 my-12">No blog posts found with this tag.</p>
+      )}
+      
+      <div class="mt-8 text-center">
+        <a href="/posts" class="inline-block px-6 py-3 bg-sunshade-500 text-white rounded-md hover:bg-sunshade-600 transition-colors">
+          View All Blog Posts
+        </a>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

@@ -1,39 +1,59 @@
 ---
-import ProjectCard from '../../components/containers/ProjectCard.astro'
-import { getCollection } from "astro:content";
+import { getCollection } from 'astro:content';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumb from "../../components/utils/Breadcrumb.astro";
+import BlogCard from "../../components/containers/BlogCard.astro";
 
+// Get all blog posts
+const allPosts = await getCollection('posts');
 
-import IndexPageLayout from "../../layouts/IndexPageLayout.astro";
-
-
-// read mdx files from projects folder as entities
-const posts = await getCollection('posts');
-
-// sort projects by dateStart DESC
-posts.sort((a: any, b: any) => {
-    return new Date(b.data.startDate) - new Date(a.data.startDate);
+// Sort by publishDate DESC if available, otherwise by title
+allPosts.sort((a, b) => {
+    if (a.data.publishDate && b.data.publishDate) {
+        return new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime();
+    }
+    return a.data.title.localeCompare(b.data.title);
 });
+
+// Extract all tags from posts
+const allTags = [...new Set(allPosts.flatMap(post => post.data.tags || []))].sort();
+
+const breadcrumbTrail = [
+    { label: "Home", url: "/" },
+    { label: "Blog", url: null }, // Current page has no link
+];
 ---
 
-<IndexPageLayout title="Blog" description="What is top of mind for me today"
-                 subTitle="TCHeiner Blog">
+<BaseLayout title="Blog">
+    <main class="relative overflow-hidden">
+        <!-- Centered container -->
+        <div class="relative mx-auto px-4 sm:px-6 max-w-7xl py-12 md:px-12">
+            <!-- Breadcrumb -->
+            <Breadcrumb trail={breadcrumbTrail} />
+            
+            <!-- Tags Section -->
+            {allTags.length > 0 && (
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold mb-4">Browse by Tag</h2>
+                    <div class="tags-container">
+                        {allTags.map(tag => (
+                            <a 
+                                href={`/posts/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`}
+                                class="tag-button"
+                                style="background-color: var(--color-negroni-500); color: var(--color-charcoal-900);"
+                            >
+                                {tag}
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            )}
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-        {
-            posts.map((entity: any) => (
-                    <ProjectCard
-                            class=""
-                            key={entity.data.title}
-                            href={'/posts/' + entity.slug}
-                            heading={entity.data.title}
-                            subheading={entity.data.description}
-                            altText={entity.data?.image?.alt}
-                            imagePath={entity.data?.image?.url}
-                            dateStart={entity.data.startDate}
-                    />
-            ))
-        }
-    </div>
-
-
-</IndexPageLayout>
+            <!-- Blog Content -->
+            <BlogCard
+                posts={allPosts}
+                title="Blog Posts"
+            />
+        </div>
+    </main>
+</BaseLayout>

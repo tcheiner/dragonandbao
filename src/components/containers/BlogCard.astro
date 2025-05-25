@@ -1,0 +1,47 @@
+---
+import "../../styles/global.css";
+import ProjectCard from "./ProjectCard.astro";
+
+export interface Props {
+    posts: any[];
+    title: string;
+}
+
+const { posts, title } = Astro.props;
+---
+
+<div class="mb-8">
+    <h1 class="text-3xl font-bold mb-6">{title}</h1>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {posts.map((post) => (
+            <ProjectCard
+                key={post.data.title}
+                href={`/posts/${post.slug}`}
+                heading={post.data.title}
+                subheading={post.data.description}
+                altText={post.data.image?.alt}
+                imagePath={post.data.image?.url}
+                dateStart={post.data.publishDate}
+                customStyle="border-t-4 border-sunshade-500"
+            />
+        ))}
+    </div>
+    
+    {posts.length === 0 && (
+        <p class="text-center text-gray-500 my-12">No blog posts found.</p>
+    )}
+</div>
+
+<style>
+    /* Add custom styling for blog cards */
+    :global(.blog-card) {
+        border-top: 4px solid var(--color-sunshade-500);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    :global(.blog-card:hover) {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+</style>
