@@ -25,7 +25,7 @@ export const siteConfig = {
             { name: "Home", href: "/" },
             { name: "Weekly Menus", href: "/weeklyMenus" },
             { name: "Recipes", href: "/recipes" },
-            { name: "Blog", href: "/posts" }
+            // { name: "Blog", href: "/posts" }
         ],
         rightHeaderNavLinks: [
             { name: "Login", href: "/login" },

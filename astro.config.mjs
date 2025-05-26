@@ -4,6 +4,7 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 
+
 import node from '@astrojs/node';
 
 // https://astro.build/config
@@ -13,7 +14,7 @@ export default defineConfig({
   },
 
   // Add your domain here
-  site: 'https://dragonnbao.co',
+  site: 'https://dragonandbao.netlify.app',
 
   integrations: [
       sitemap(),

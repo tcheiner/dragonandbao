@@ -8,7 +8,7 @@ const { slug, title, creditUrl, image, idealImage, realisticImage, prepTime, coo
 ---
 
 <BaseLayout title={title}>
-    <Container>
+    <Container class="container">
         <div class="recipe-container">
             <div class="recipe-breadcrumb">
                 <nav class="flex" aria-label="Breadcrumb">
@@ -87,7 +87,7 @@ const { slug, title, creditUrl, image, idealImage, realisticImage, prepTime, coo
                     <div class="recipe-card-images">
                         {idealImage && (
                             <div class="recipe-card-image">
-                                <img src={idealImage} alt={`${title}`} />
+                                <img src={idealImage} alt={`${title}`}/>
                             </div>
                         )}
                         {realisticImage && idealImage !== realisticImage && (

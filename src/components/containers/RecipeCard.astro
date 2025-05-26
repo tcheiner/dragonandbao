@@ -9,7 +9,7 @@ const recipeCollection = Object.values(recipeFiles).map((file) => {
     return {
         slug: frontmatter.slug,
         title: frontmatter.title || "Untitled Recipe",
-        image: frontmatter.image || { url: "/images/default.jpg", alt: "Default image" },
+        image: frontmatter.image || { url: "/images/cooking/default.jpg", alt: "Default image" },
         description: frontmatter.description || "No description available",
         title_desc: frontmatter.title_desc || frontmatter.description || "No description available",
         tags: frontmatter.tags || []

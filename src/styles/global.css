@@ -233,6 +233,63 @@ button:hover {
   z-index: 1000;
 }
 
+.container {
+  opacity: 0.9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+/* Size-specific styles */
+.container-sm {
+  max-width: 640px; /* Tailwind's max-w-screen-sm */
+}
+
+.container-md {
+  max-width: 768px; /* Tailwind's max-w-screen-md */
+}
+
+.container-lg {
+  max-width: 1024px; /* Tailwind's max-w-screen-lg */
+}
+
+.container-xl {
+  max-width: 1280px; /* Tailwind's max-w-screen-xl */
+}
+
+.container-2xl {
+  max-width: 1536px; /* Tailwind's max-w-screen-2xl */
+}
+/*.container {*/
+/*  position: relative; !* Create a stacking context *!*/
+/*  background-image: url('/path-to-your-image.jpg');*/
+/*  background-size: cover;*/
+/*  background-position: center;*/
+/*  background-repeat: no-repeat;*/
+/*  border-radius: 8px;*/
+/*  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
+/*  padding: 20px;*/
+/*  max-width: 800px;*/
+/*  margin: 0 auto;*/
+/*  overflow: hidden;*/
+/*}*/
+
+/*.container::before {*/
+/*  content: ""; !* Empty pseudo-element *!*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*  left: 0;*/
+/*  width: 100%;*/
+/*  height: 100%;*/
+/*  background: rgba(0, 0, 0, 0.4); !* Semi-transparent overlay *!*/
+/*  z-index: 0; !* Place it below the content *!*/
+/*}*/
+
+/*.container > * {*/
+/*  position: relative; !* Ensure content is above the overlay *!*/
+/*  z-index: 1;*/
+/*}*/
 /* Navigation Container */
 .nav-container {
   display: flex;
@@ -300,9 +357,9 @@ button:hover {
 
 /* Recipe Card Styles */
 .recipe-card {
-  background-color: white;
+  background-color: var(--color-san-juan-900);
   border-radius: 0.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   margin-bottom: 2rem;
 }
@@ -323,7 +380,7 @@ button:hover {
 }
 
 .recipe-card-header p {
-  color: #4b5563;
+  color: var(--color-wild-sand-200);
   margin-bottom: 1rem;
 }
 
@@ -336,7 +393,7 @@ button:hover {
 }
 
 .recipe-card-meta-item {
-  background-color: var(--color-wild-sand-100);
+  background-color: var(--color-negroni-900);
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
 }
@@ -344,7 +401,8 @@ button:hover {
 .recipe-card-meta-item span.block {
   display: block;
   font-size: 0.875rem;
-  color: #6b7280;
+  font-weight: 400;
+  color: var(--color-wild-sand-100);
 }
 
 .recipe-card-meta-item span.font-medium {
@@ -392,7 +450,7 @@ button:hover {
 }
 
 .recipe-breadcrumb a {
-  color: var(--color-aquamarine-blue-500);
+  color: var(--color-cascade-400);
 }
 
 .recipe-breadcrumb a:hover {
@@ -421,15 +479,15 @@ button:hover {
 .tag-button {
   background-color: var(--color-sunshade-500);
   color: white;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.75rem;
   border-radius: 9999px;
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: 0.75rem;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
   display: inline-block;
-  margin: 0.25rem;
+  margin: 0.1rem;
 }
 
 .tag-button:hover {
@@ -460,7 +518,7 @@ button:hover {
 .tags-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.25rem;
   margin-bottom: 1.5rem;
 }
 
@@ -475,18 +533,26 @@ button:hover {
   .recipe-card-images {
     flex-direction: row;
   }
+  .container {
+    max-width: 100%; /* Full width on smaller screens */
+    padding: 10px; /* Reduce padding */
+  }
 }
 
 .recipe-card-image {
-  flex: 1;
+  /*flex: 1;*/
   border-radius: 0.5rem;
   overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 .recipe-card-image img {
-  width: 100%;
+  width: 50%;
   height: auto;
   object-fit: cover;
+  display: block;
 }
 
 .recipe-card-body {
@@ -497,9 +563,10 @@ button:hover {
 .recipe-card-body h1,
 .recipe-card-body h2,
 .recipe-card-body h3 {
-  color: var(--color-aquamarine-blue-700);
+  color: var(--color-cascade-300);
   margin-top: 1.5rem;
   margin-bottom: 1rem;
+  font-weight: 600;
 }
 
 .recipe-card-body ul,
@@ -536,7 +603,7 @@ nav[aria-label="Breadcrumb"] li a:hover {
 }
 
 nav[aria-label="Breadcrumb"] li span {
-  color: #6b7280; /* Tailwind's gray-500 */
+  color: var(--color-sunshade-400);
   font-family: "NiveauBold", sans-serif; /* Corrected font-family name */
   font-size: 1rem;
   font-weight: 600; /* Increased font weight for non-link text */
