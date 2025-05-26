@@ -316,6 +316,17 @@ button:hover {
   margin-bottom: 1.5rem;
 }
 
+.recipe-card-header h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.recipe-card-header p {
+  color: #4b5563;
+  margin-bottom: 1rem;
+}
+
 .recipe-card-meta {
   display: flex;
   flex-wrap: wrap;
@@ -328,6 +339,16 @@ button:hover {
   background-color: var(--color-wild-sand-100);
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
+}
+
+.recipe-card-meta-item span.block {
+  display: block;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.recipe-card-meta-item span.font-medium {
+  font-weight: 500;
 }
 
 .recipe-card-tags {
@@ -344,6 +365,44 @@ button:hover {
   font-size: 0.75rem;
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
+}
+
+.recipe-container {
+  max-width: 64rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background-image: url('/images/grid-background.jpg');
+  background-size: cover;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  background-blend-mode: overlay;
+}
+
+.recipe-breadcrumb {
+  margin-bottom: 1.5rem;
+}
+
+.recipe-breadcrumb ol {
+  display: inline-flex;
+  align-items: center;
+  space-x: 0.25rem;
+}
+
+.recipe-breadcrumb a {
+  color: var(--color-aquamarine-blue-500);
+}
+
+.recipe-breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.recipe-breadcrumb svg {
+  width: 0.75rem;
+  height: 0.75rem;
+  margin-right: 0.5rem;
 }
 
 /* Tag styles */
