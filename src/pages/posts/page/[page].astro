@@ -1,98 +1,57 @@
----
+--
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { cn } from '../../../lib/utils';
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ProjectCard from '../../../components/containers/ProjectCard.astro'
 
 export async function getStaticPaths({ paginate }) {
-  const allPosts = await getCollection('posts');
-  const sortedPosts = allPosts.sort((a, b) => new Date(b.data.startDate).valueOf() - new Date(a.data.startDate).valueOf());
-  
-  return paginate(sortedPosts, { pageSize: 10 });
-}
+    const allPosts = await getCollection('posts');
+
+    // Sort by date if available, otherwise by title
+  allPosts.sort((a, b) => {
+    if (a.data.startDate && b.data.startDate) {
+        return new Date(b.data.startDate) - new Date(a.data.startDate);
+        }
+    return a.data.title.localeCompare(b.data.title);
+    });
+
+    // Generate pages with 16 items per page (4x4 grid)
+  return paginate(allPosts, { pageSize: 16 });
+    }
 
 const { page } = Astro.props;
+const totalPages = page.lastPage;
+const currentPage = page.currentPage;
 ---
 
-<BaseLayout title="Blog Posts">
-  <div class="max-w-4xl mx-auto my-8 px-4">
-    <h1 class="text-3xl font-bold mb-8 text-center">Blog Posts</h1>
-    
-    <div class="text-center p-8 bg-gray-100 dark:bg-gray-800 rounded-lg">
-      <h2 class="text-2xl font-bold mb-4">Coming Soon</h2>
-      <p class="text-gray-700 dark:text-gray-300">
-        Our blog section is currently under development. Please check back later!
-      </p>
-    </div>
-    
-    {/* Original blog content commented out
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {page.data.map((post) => (
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-          {post.data.image && (
-            <img 
-              src={typeof post.data.image === 'string' ? post.data.image : post.data.image.url} 
-              alt={typeof post.data.image === 'object' ? post.data.image.alt || post.data.title : post.data.title}
-              class="w-full h-48 object-cover"
-            />
-          )}
-          <div class="p-4">
-            <h2 class="text-xl font-semibold mb-2">
-              <a href={`/posts/${post.slug}`} class="hover:text-orange-500">
-                {post.data.title}
-              </a>
-            </h2>
-            <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
-              {new Date(post.data.startDate).toLocaleDateString('en-US', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-              })}
-            </p>
-            {post.data.description && (
-              <p class="text-gray-700 dark:text-gray-300 mb-4 line-clamp-3">
-                {post.data.description}
-              </p>
-            )}
-            {post.data.tags && (
-              <div class="flex flex-wrap gap-2 mt-3">
-                {post.data.tags.map((tag) => (
-                  <a 
-                    href={`/posts/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`}
-                    class="text-xs bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-full hover:bg-orange-200 dark:hover:bg-orange-800"
-                  >
-                    {tag}
-                  </a>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-      ))}
-    </div>
-    
-    {(page.url.prev || page.url.next) && (
-      <div class="flex justify-between items-center mt-8">
-        {page.url.prev ? (
-          <a href={page.url.prev} class="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600">
-            &larr; Previous
+<BaseLayout title=Posts" description="Browse our posts" subTitle="Dragon & Bao Blog">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mx-auto place-items-center">
+    {
+      page.data.map((entity: any) => (
+          <ProjectCard
+              class=""
+              key={entity.data.title}
+              href={'/posts/' + entity.slug}
+              heading={entity.data.title}
+              subheading={entity.data.description || entity.data.title}
+              altText={entity.data?.image?.alt || `Image of ${entity.data.title}`}
+              imagePath={entity.data?.image?.url || entity.data.idealImage || "/images/dragonnbao-light-logo.png"}
+              dateStart={entity.data.startDate}
+          />
+      ))
+    }
+  </div>
+
+  <!-- Pagination -->
+  <div class="flex justify-center mt-8 space-x-2">
+    {
+      Array.from({ length: totalPages }).map((_, i) => (
+          <a
+              href={i === 0 ? '/posts' : `/posts/page/${i + 1}`}
+              class={`px-4 py-2 rounded-md ${currentPage === i + 1 ? 'bg-aquamarine-blue-400 text-white' : 'bg-gray-200 text-gray-700'}`}
+          >
+            {i + 1}
           </a>
-        ) : (
-          <div></div>
-        )}
-        
-        <span class="text-gray-700 dark:text-gray-300">
-          Page {page.currentPage} of {page.lastPage}
-        </span>
-        
-        {page.url.next ? (
-          <a href={page.url.next} class="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600">
-            Next &rarr;
-          </a>
-        ) : (
-          <div></div>
-        )}
-      </div>
-    )}
-    */}
+      ))
+    }
   </div>
 </BaseLayout>
