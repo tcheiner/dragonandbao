@@ -1,0 +1,57 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from "../../../../../src/layouts/BaseLayout.astro";
+import ProjectCard from '../../../../../src/components/containers/ProjectCard.astro'
+
+export async function getStaticPaths({ paginate }) {
+    const allPosts = await getCollection('posts');
+
+    // Sort by date if available, otherwise by title
+    allPosts.sort((a, b) => {
+        if (a.data.startDate && b.data.startDate) {
+            return new Date(b.data.startDate) - new Date(a.data.startDate);
+        }
+        return a.data.title.localeCompare(b.data.title);
+    });
+
+    // Generate pages with 16 items per page (4x4 grid)
+    return paginate(allPosts, { pageSize: 16 });
+}
+
+const { page } = Astro.props;
+const totalPages = page.lastPage;
+const currentPage = page.currentPage;
+---
+
+<BaseLayout title="Posts" description="Browse our posts" subTitle="Dragon & Bao Blog">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mx-auto place-items-center">
+    {
+      page.data.map((entity: any) => (
+          <ProjectCard
+              class=""
+              key={entity.data.title}
+              href={'/posts/' + entity.slug}
+              heading={entity.data.title}
+              subheading={entity.data.description || entity.data.title}
+              altText={entity.data?.image?.alt || `Image of ${entity.data.title}`}
+              imagePath={entity.data?.image?.url || entity.data.idealImage || "/images/dragonnbao-light-logo.png"}
+              dateStart={entity.data.startDate}
+          />
+      ))
+    }
+  </div>
+
+  <!-- Pagination -->
+  <div class="flex justify-center mt-8 space-x-2">
+    {
+      Array.from({ length: totalPages }).map((_, i) => (
+          <a
+              href={i === 0 ? '/posts' : `/posts/page/${i + 1}`}
+              class={`px-4 py-2 rounded-md ${currentPage === i + 1 ? 'bg-aquamarine-blue-400 text-white' : 'bg-gray-200 text-gray-700'}`}
+          >
+            {i + 1}
+          </a>
+      ))
+    }
+  </div>
+</BaseLayout>

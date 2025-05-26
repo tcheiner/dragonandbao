@@ -6,13 +6,17 @@ const { trail } = Astro.props; // Accept a trail prop (array of breadcrumb items
         {trail.map((item, index) => (
                 <li class="flex items-center">
                     {item.url ? (
-                            <a href={item.url} class="text-blue-600 hover:underline">
+                            <a href={item.url} >
                                 {item.label}
                             </a>
                     ) : (
-                            <span>{item.label}</span> <!-- Current page (no link) -->
+                            <span>{item.label}</span>
                     )}
-                    {index < trail.length - 1 && <span class="mx-2">/</span>}
+                    {index < trail.length - 1 && <span class="mx-2">
+                         <svg class="w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                                </svg>
+                    </span>}
                 </li>
         ))}
     </ol>
