@@ -373,12 +373,12 @@ button:hover {
   margin-right: auto;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  background-image: url('/images/grid-background.jpg');
-  background-size: cover;
+  /*background-image: url('/images/grid-background.jpg');*/
+  /*background-size: cover;*/
   padding: 2rem;
   border-radius: 0.5rem;
-  background-color: rgba(255, 255, 255, 0.5);
-  background-blend-mode: overlay;
+  /*background-color: var(--color-san-juan-600);*/
+  /*background-blend-mode: overlay;*/
 }
 
 .recipe-breadcrumb {
@@ -505,19 +505,35 @@ nav[aria-label="Breadcrumb"] ol {
   list-style: none;
   padding: 0;
   margin: 0;
+  font-family: "Arial", sans-serif; /* Set the font-family for the breadcrumb container */
+  font-size: 1rem; /* Set the font size for the breadcrumb container */
+  font-weight: 400; /* Set the font weight for the breadcrumb container */
 }
 
 nav[aria-label="Breadcrumb"] li a {
   text-decoration: none;
-  color: #1d4ed8; /* Tailwind's blue-600 */
+  color: var(--color-sunshade-200); /* breadcrumb hyperlink */
+  font-family: "Roboto", sans-serif; /* Example: Change font-family for links */
+  font-size: 1rem; /* Adjust font size for links */
+  font-weight: 500; /* Adjust font weight for links */
 }
 
 nav[aria-label="Breadcrumb"] li a:hover {
   text-decoration: underline;
+  font-style: italic;
 }
 
 nav[aria-label="Breadcrumb"] li span {
   color: #6b7280; /* Tailwind's gray-500 */
+  font-family: "Georgia", serif; /* Example: Change font-family for non-link text */
+  font-size: 0.9rem; /* Slightly smaller font size for non-link text */
+  font-weight: 400; /* Regular font weight for non-link text */
 }
 
-
+@font-face {
+  font-family: "NiveauBold"; /* Name of your font */
+  src: url("../fonts/NiveauGroteskBold.woff2") format("woff2"), /* Modern browsers */
+  url("../fonts/NiveauGroteskBold.woff") format("woff");   /* Older browsers */
+  font-weight: bold; /* Optional: Define font weight (e.g., normal, bold) */
+  font-style: normal;  /* Optional: Define font style (e.g., normal, italic) */
+}
