@@ -405,6 +405,18 @@ button:hover {
   margin-right: 0.5rem;
 }
 
+/* Social links in footer */
+.social-link {
+  font-family: "NiveauBold", sans-serif;
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.social-link:hover {
+  color: var(--color-sunshade-400);
+  text-decoration: underline;
+}
+
 /* Tag styles */
 .tag-button {
   background-color: var(--color-sunshade-500);
