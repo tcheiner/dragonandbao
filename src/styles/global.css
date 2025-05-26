@@ -532,8 +532,8 @@ nav[aria-label="Breadcrumb"] li span {
 
 @font-face {
   font-family: "NiveauBold"; /* Name of your font */
-  src: url("../fonts/NiveauGroteskBold.woff2") format("woff2"), /* Modern browsers */
-  url("../fonts/NiveauGroteskBold.woff") format("woff");   /* Older browsers */
+  src: url("/fonts/NiveauGroteskBold.woff2") format("woff2"), /* Modern browsers */
+       url("/fonts/NiveauGroteskBold.woff") format("woff");   /* Older browsers */
   font-weight: bold; /* Optional: Define font weight (e.g., normal, bold) */
   font-style: normal;  /* Optional: Define font style (e.g., normal, italic) */
 }
