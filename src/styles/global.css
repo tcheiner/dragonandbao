@@ -505,17 +505,17 @@ nav[aria-label="Breadcrumb"] ol {
   list-style: none;
   padding: 0;
   margin: 0;
-  font-family: "NiveaBold", sans-serif; /* Set the font-family for the breadcrumb container */
-  font-size: 1rem; /* Set the font size for the breadcrumb container */
-  font-weight: 500; /* Set the font weight for the breadcrumb container */
+  font-family: "NiveauBold", sans-serif; /* Corrected font-family name */
+  font-size: 1rem;
+  font-weight: 700; /* Increased font weight for boldness */
 }
 
 nav[aria-label="Breadcrumb"] li a {
   text-decoration: none;
   color: var(--color-sunshade-200); /* breadcrumb hyperlink */
-  font-family: "NiveaBold", sans-serif; /* Example: Change font-family for links */
-  font-size: 1rem; /* Adjust font size for links */
-  font-weight: 500; /* Adjust font weight for links */
+  font-family: "NiveauBold", sans-serif; /* Corrected font-family name */
+  font-size: 1rem;
+  font-weight: 700; /* Increased font weight for boldness */
 }
 
 nav[aria-label="Breadcrumb"] li a:hover {
@@ -525,9 +525,9 @@ nav[aria-label="Breadcrumb"] li a:hover {
 
 nav[aria-label="Breadcrumb"] li span {
   color: #6b7280; /* Tailwind's gray-500 */
-  font-family: "NiveaBold", sans-serif; /* Example: Change font-family for non-link text */
-  font-size: 1rem; /* Slightly smaller font size for non-link text */
-  font-weight: 400; /* Regular font weight for non-link text */
+  font-family: "NiveauBold", sans-serif; /* Corrected font-family name */
+  font-size: 1rem;
+  font-weight: 600; /* Increased font weight for non-link text */
 }
 
 @font-face {
@@ -536,4 +536,5 @@ nav[aria-label="Breadcrumb"] li span {
        url("/fonts/NiveauGroteskBold.woff") format("woff");   /* Older browsers */
   font-weight: bold; /* Optional: Define font weight (e.g., normal, bold) */
   font-style: normal;  /* Optional: Define font style (e.g., normal, italic) */
+  font-display: swap; /* Improve font loading performance */
 }
