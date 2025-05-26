@@ -1,16 +1,16 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import Breadcrumb from "../../components/utils/Breadcrumb.astro";
-import BlogCard from "../../components/containers/BlogCard.astro";
+import BaseLayout from "../../../src/layouts/BaseLayout.astro";
+import Breadcrumb from "../../../src/components/utils/Breadcrumb.astro";
+import BlogCard from "../../../src/components/containers/BlogCard.astro";
 
 // Get all blog posts
 const allPosts = await getCollection('posts');
 
 // Sort by publishDate DESC if available, otherwise by title
 allPosts.sort((a, b) => {
-    if (a.data.publishDate && b.data.publishDate) {
-        return new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime();
+    if (a.data.startDate && b.data.startDate) {
+        return new Date(b.data.startDate).getTime() - new Date(a.data.startDate).getTime();
     }
     return a.data.title.localeCompare(b.data.title);
 });
