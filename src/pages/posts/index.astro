@@ -1,8 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from "../../../../src/layouts/BaseLayout.astro";
-import Breadcrumb from "../../../../src/components/utils/Breadcrumb.astro";
-import BlogCard from "../../../../src/components/containers/BlogCard.astro";
+import BaseLayout from "../../../src/layouts/BaseLayout.astro";
+import Breadcrumb from "../../../src/components/utils/Breadcrumb.astro";
+import BlogCard from "../../../src/components/containers/BlogCard.astro";
 
 // Get all blog posts
 const allPosts = await getCollection('posts');
