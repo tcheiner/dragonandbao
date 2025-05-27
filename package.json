@@ -7,7 +7,7 @@
     "build": "astro build",
     "dev": "astro dev",
     "preview": "astro preview",
-    "start": "astro dev"
+    "start": "node ./dist/server/entry.mjs"
   },
   "engines": {
     "python": "3.12"
