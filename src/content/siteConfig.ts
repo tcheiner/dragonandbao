@@ -29,8 +29,7 @@ export const siteConfig = {
         ],
         rightHeaderNavLinks: [
             { name: "Login", href: "/login" },
-            { name: "Register", href: "/register" },
-            { name: "Checkout", href: "/checkout" }
+            { name: "Register", href: "/register" }
         ],
         socialLinks: [
             { name: "Instagram", href: "https://instagram.com/dragonnbao" },
